@@ -1,10 +1,13 @@
 import { ValidationError } from 'class-validator'
 import { baseErrorList } from '@domain/utils/base-error-list'
-import { actions } from '@business/utils/base-response'
 
-export class BaseOperation<O> {
+export enum actions {
+  'CREATE', 'GET', 'UPDATE', 'DELETE'
+} 
 
-  protected async makeResponse(output: O | O[] | null, action: actions,
+export class BaseOperation<Output> {
+
+  protected async makeResponse(output: Output | Output[] | null, action: actions,
                                hasError = false, 
                                error?: baseErrorList | any): Promise<response>{
 
@@ -23,7 +26,7 @@ export class BaseOperation<O> {
             body: JSON.stringify({
               data: output,
               success: true
-            } as success<O>)
+            } as success<Output>)
           }as response
         case actions.GET:
           if(output === null){
