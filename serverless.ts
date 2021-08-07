@@ -1,6 +1,6 @@
 import type { AWS } from '@serverless/typescript'
 
-import hello from '@framework/functions/hello'
+import { categoriaHandler } from '@framework/functions/categoria/_handler'
 
 const serverlessConfiguration: AWS = {
   service: 'controle-financeiro',
@@ -8,7 +8,7 @@ const serverlessConfiguration: AWS = {
   custom: {
     webpack: {
       webpackConfig: './webpack.config.js',
-      includeModules: true,
+      includeModules: true
     },
   },
   plugins: ['serverless-webpack', 'serverless-offline'],
@@ -21,11 +21,16 @@ const serverlessConfiguration: AWS = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+      DATABASE_HOST: '127.0.0.1',
+      DATABASE_PORT: '33306',
+      DATABASE_USER: 'root',
+      DATABASE_PASSWORD: 'financeiro',
+      DATABASE: 'financeiro'
     },
     lambdaHashingVersion: '20201221',
   },
   // import the function via paths
-  functions: { hello },
+  functions: { ...categoriaHandler },
 }
 
 module.exports = serverlessConfiguration

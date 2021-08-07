@@ -1,0 +1,17 @@
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: "financeiro"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "financeiro"
+      MYSQL_ROOT_PASSWORD: "financeiro"
+    ports:
+      - "33306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+volumes:
+  dbdata:
