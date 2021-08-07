@@ -9,4 +9,5 @@ export interface ICategoriaRepository {
   getAll (nome: string): Promise<ICategoria[]>
   update (input: ICategoria): Promise<ICategoria | null>
   delete (id: number): Promise<boolean>
+  getByName (nome: string): Promise<ICategoria | null>
 }

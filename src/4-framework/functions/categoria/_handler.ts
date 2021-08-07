@@ -1,7 +1,7 @@
 const funcDir = 'src/4-framework/functions/categoria'
 export const categoriaHandler = {
   create: {
-    handler: `${funcDir}/createFunction.handler`,
+    handler: `${funcDir}/criarFunction.handler`,
     events: [
       {
         http: {

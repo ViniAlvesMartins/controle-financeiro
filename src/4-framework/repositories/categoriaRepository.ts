@@ -20,7 +20,14 @@ export class CategoriaRepository implements ICategoriaRepository {
   }
 
   async create(input: ICategoria): Promise<ICategoria | null> {
-    throw new Error('Method not implemented.')
+    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: iniciando a execução do create`)
+    
+    const categoria = await this.categoriaRepository.create(input)
+
+    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: create ${JSON.stringify(categoria)}`)
+    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: finalizando a execução do create`)
+
+    return categoria
   }
 
   async getById(id: number): Promise<ICategoria | null> {
@@ -58,4 +65,17 @@ export class CategoriaRepository implements ICategoriaRepository {
     throw new Error('Method not implemented.')
   }
 
+  async getByName(nome: string): Promise<ICategoria> {
+    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: iniciando a execução do getById`)
+
+    const categoria = await this.categoriaRepository.findOne({
+      where: {
+        nome
+      }
+    })
+    
+    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: getById ${JSON.stringify(categoria)}`)
+    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: finalizando a execução do getById`)
+    return categoria
+  }
 }

@@ -1,86 +1,45 @@
-import { ValidationError } from 'class-validator'
-import { baseErrorList } from '@domain/utils/base-error-list'
+import { baseErrorList } from '@domain/utils/baseErrorList'
 
-export enum actions {
-  'CREATE', 'GET', 'UPDATE', 'DELETE'
+export enum statusCode {
+  SUCCESS = 200,
+  CREATED = 201,
+  SEE_OTHER = 303,
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  NOT_FOUND = 404
 } 
 
-export class BaseOperation<Output> {
+export class BaseOperation {
+  protected validacoes: baseErrorList[] = []
 
-  protected async makeResponse(output: Output | Output[] | null, action: actions,
-                               hasError = false, 
-                               error?: baseErrorList | any): Promise<response>{
+  protected async makeResponse(data: any, statusCode: number ): Promise<response> {
+    return {
+      statusCode,
+      body: JSON.stringify({
+        data
+      })
+    }
+  }
 
-    if(hasError){
+  protected async makeResponseValidation(error: baseErrorList[]): Promise<response>{
       return {
         statusCode: 400,
         body: JSON.stringify({
           error: error
         })
-      }as response
-    }else{
-      switch (action) {
-        case actions.CREATE:
-          return {
-            statusCode: 201,
-            body: JSON.stringify({
-              data: output,
-              success: true
-            } as success<Output>)
-          }as response
-        case actions.GET:
-          if(output === null){
-            return {
-              statusCode: 204,
-              body: JSON.stringify({
-                data: output,
-                success: true
-              })
-            }as response
-          }
-          return {
-            statusCode: 200,
-            body: JSON.stringify({
-              data: output,
-              success: true
-            })
-          }as response
-          
-        case actions.UPDATE:
-        case actions.DELETE:
-          return {
-            statusCode: 200,
-            body: JSON.stringify({
-              data: output,
-              success: true
-            })
-          }as response
       }
-    }
   }
 
-  protected async makeResponseCatch(err: any, action: actions): Promise<response>{
-    let data = null
-    if (
-      err instanceof Array &&
-      err.length &&
-      err[0] instanceof ValidationError
-    ) {
-      data = err.map(i => ({
-        property: i.property,
-        constraints: i.constraints
-      }))
-    }
-    return this.makeResponse(null, action, true, {data, error:'fail validation'})
+  protected async makeInputValidation(mensagem: string): Promise<void> {
+    this.validacoes.push({
+      codigo: 'erro_validacao',
+      mensagem
+    } as baseErrorList)
   }
+
 }
 
 export interface response {
   statusCode: number,
   body: string
-}
-
-interface success<O> {
-  success: boolean
-  data: O
 }

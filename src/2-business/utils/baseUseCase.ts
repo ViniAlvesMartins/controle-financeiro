@@ -1,4 +1,4 @@
-import { baseErrorList } from '@domain/utils/base-error-list'
+import { baseErrorList } from '@domain/utils/baseErrorList'
 import { BaseResponse } from './baseResponse'
 
 
