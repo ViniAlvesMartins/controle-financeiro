@@ -30,5 +30,24 @@ export const categoriaHandler = {
         }
       }
     ]
+  },
+  obter: {
+    handler: `${funcDir}/obterFunction.handler`,
+    events: [
+      {
+        http: {
+          method: 'get',
+          path: 'categorias/{categoriaId}',
+          cors: true,
+          request: {
+            parameters: {
+              paths : {
+                categoriaId: true
+              }
+            }
+          }
+        }
+      }
+    ]
   }
 }

@@ -19,16 +19,21 @@ export class CategoriaRepository implements ICategoriaRepository {
     this.categoriaRepository = repository
   }
 
-  create(input: ICategoria): Promise<ICategoria | null> {
+  async create(input: ICategoria): Promise<ICategoria | null> {
     throw new Error('Method not implemented.')
   }
 
-  getById(id: number): Promise<ICategoria | null> {
-    throw new Error('Method not implemented.')
+  async getById(id: number): Promise<ICategoria | null> {
+    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: iniciando a execução do getById`)
+
+    const categoria = await this.categoriaRepository.findByPk(id)
+    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: getById ${JSON.stringify(categoria)}`)
+    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: finalizando a execução do getById`)
+    return categoria
   }
 
   async getAll(nome: string): Promise<ICategoria[]> {
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: iniciando a execução do repository`)
+    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: iniciando a execução do getAll`)
     let condition
 
     if (nome) {
@@ -38,8 +43,11 @@ export class CategoriaRepository implements ICategoriaRepository {
         }
       }
     }
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: finalizando a execução do repository`)
-    return await this.categoriaRepository.findAll(condition)
+
+    const categorias = await this.categoriaRepository.findAll(condition)
+
+    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: finalizando a execução do getAll`)
+    return categorias
   }
 
   update(input: ICategoria): Promise<ICategoria | null> {

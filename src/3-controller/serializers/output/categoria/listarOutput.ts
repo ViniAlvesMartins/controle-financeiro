@@ -1,6 +1,4 @@
-export type ListarOutput = {
-  categorias: Output[]
-}
+export type ListarOutput = Output[]
 
 export type Output = {
   categoriaId: number,

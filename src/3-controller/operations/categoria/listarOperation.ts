@@ -35,11 +35,8 @@ export class ListarOperation extends BaseOperation<ListarOutput> {
           } as Output)
         })
         
-        const response = {
-          categorias: output
-        } as ListarOutput
         this._logger.info(`class: ${ListarOperation.name} | method: exec | message: finalizando a execução da operation`)
-        return this.makeResponse(response, actions.GET, false)
+        return this.makeResponse(output, actions.GET, false)
       }
       return this.makeResponse(null, actions.GET, false) 
     } catch (error) {
