@@ -68,6 +68,24 @@ export const categoriaHandler = {
         }
       }
     ]
-  }
-
+  },
+  delete: {
+    handler: `${funcDir}/deleteFunction.handler`,
+    events: [
+      {
+        http: {
+          method: 'delete',
+          path: 'categorias/{categoriaId}',
+          cors: true,
+          request: {
+            parameters: {
+              paths : {
+                categoriaId: true
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
 }
