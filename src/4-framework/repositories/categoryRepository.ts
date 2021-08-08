@@ -10,19 +10,19 @@ import { Inject, Service } from 'typedi'
 })
 export class CategoryRepository implements ICategoryRepository {
 
-  private readonly categoryRepository!: typeof CategoryModel
+  private readonly _categoryRepository!: typeof CategoryModel
 
   @Inject(LoggerToken)
   private readonly _logger!: ILogger
 
   constructor(@Inject(CategoryModelToken) repository: typeof CategoryModel) {
-    this.categoryRepository = repository
+    this._categoryRepository = repository
   }
 
   async create(input: ICategory): Promise<ICategory | null> {
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: starting create execution`)
     
-    const category = await this.categoryRepository.create(input)
+    const category = await this._categoryRepository.create(input)
 
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: create ${JSON.stringify(category)}`)
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: finishing create execution`)
@@ -33,7 +33,7 @@ export class CategoryRepository implements ICategoryRepository {
   async getById(categoryId: number): Promise<ICategory | null> {
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: starting getById execution`)
 
-    const category = await this.categoryRepository.findByPk(categoryId)
+    const category = await this._categoryRepository.findByPk(categoryId)
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: getById ${JSON.stringify(category)}`)
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: finishing getById execution`)
     return category
@@ -51,7 +51,7 @@ export class CategoryRepository implements ICategoryRepository {
       }
     }
 
-    const categories = await this.categoryRepository.findAll(condition)
+    const categories = await this._categoryRepository.findAll(condition)
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: getAll ${JSON.stringify(categories)}`)
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: finishing getAll execution`)
     return categories
@@ -61,7 +61,7 @@ export class CategoryRepository implements ICategoryRepository {
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: starting update execution`)
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: input ${JSON.stringify(input)}`)
     
-    const category = await this.categoryRepository.update({
+    const category = await this._categoryRepository.update({
       name: input.name,
       categoryId: input.categoryId
     }, {
@@ -78,7 +78,7 @@ export class CategoryRepository implements ICategoryRepository {
   async delete(categoryId: number): Promise<boolean> {
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: starting delete execution`)
 
-    const category = await this.categoryRepository.destroy({ where: {
+    const category = await this._categoryRepository.destroy({ where: {
       categoryId
     }})
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: delete ${JSON.stringify(category)}`)
@@ -89,7 +89,7 @@ export class CategoryRepository implements ICategoryRepository {
   async getByName(name: string): Promise<ICategory> {
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: starting getByName execution`)
 
-    const category = await this.categoryRepository.findOne({
+    const category = await this._categoryRepository.findOne({
       where: {
         name
       }

@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { APIGatewayProxyEvent, APIGatewayProxyHandler, Context } from 'aws-lambda'
 import Container from 'typedi'
-import '@framework/repositories/categoriaRepository'
+import '@framework/repositories/categoryRepository'
 import '@framework/modules/logger'
 import { GetByIdOperation } from '@controller/operations/category/getByIdOperation'
 import { httpEventNormalizer } from '@framework/utils/httpNormalized'

@@ -1,3 +1,4 @@
+import { Console } from 'console'
 import { Sequelize } from 'sequelize'
 import Container from 'typedi'
 
@@ -16,6 +17,9 @@ export default async function init (): Promise<void> {
   })
   
   Container.set({ id: Sequelize, value: sequelize })                                
-  Container.getMany('models')
+  const teste = Container.getMany('models')
+
+  // console.log('TESTE')
+  // console.log(teste[0])
 }
 

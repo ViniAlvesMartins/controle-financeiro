@@ -6,7 +6,7 @@ export const categoriaHandler = {
       {
         http: {
           method: 'post',
-          path: 'categorias',
+          path: 'v1/categorias',
           cors: true
         }
       }
@@ -18,7 +18,7 @@ export const categoriaHandler = {
       {
         http: {
           method: 'get',
-          path: 'categorias',
+          path: 'v1/categorias',
           cors: true,
           request: {
             parameters: {
@@ -37,7 +37,7 @@ export const categoriaHandler = {
       {
         http: {
           method: 'get',
-          path: 'categorias/{categoriaId}',
+          path: 'v1/categorias/{categoriaId}',
           cors: true,
           request: {
             parameters: {
@@ -56,7 +56,7 @@ export const categoriaHandler = {
       {
         http: {
           method: 'put',
-          path: 'categorias/{categoriaId}',
+          path: 'v1/categorias/{categoriaId}',
           cors: true,
           request: {
             parameters: {
@@ -75,7 +75,7 @@ export const categoriaHandler = {
       {
         http: {
           method: 'delete',
-          path: 'categorias/{categoriaId}',
+          path: 'v1/categorias/{categoriaId}',
           cors: true,
           request: {
             parameters: {
