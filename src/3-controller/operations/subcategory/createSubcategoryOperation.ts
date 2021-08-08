@@ -46,8 +46,8 @@ export class CreateSubcategoryOperation extends BaseOperation {
     const response = {
       subcategoryId: subcategory.subcategoryId,
       category: {
-        categoryId: subcategory.category.categoryId,
-        name: subcategory.category.name
+        categoryId: subcategory.Category.categoryId,
+        name: subcategory.Category.name
       } as CategoryOutput,
       name: subcategory.name
     } as CreateSubcategoryOutput

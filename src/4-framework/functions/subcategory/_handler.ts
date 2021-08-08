@@ -1,6 +1,6 @@
 const funcDir = 'src/4-framework/functions/subcategory'
 export const subcategoryHandler = {
-  create: {
+  createSubcategory: {
     handler: `${funcDir}/createSubcategoryFunction.handler`,
     events: [
       {
@@ -11,5 +11,24 @@ export const subcategoryHandler = {
         }
       }
     ]
-  }
+  },
+  getAllSubcategory: {
+    handler: `${funcDir}/getAllSubcategoryFunction.handler`,
+    events: [
+      {
+        http: {
+          method: 'get',
+          path: 'v1/subcategorias',
+          cors: true,
+          request: {
+            parameters: {
+              querystrings : {
+                nome: false
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
 }

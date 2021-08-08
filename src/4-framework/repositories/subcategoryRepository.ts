@@ -1,6 +1,7 @@
 import ILogger, { LoggerToken } from '@business/modules/iLogger'
 import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '@business/repositories/iSubcategoryRepository'
 import { ISubcategory } from '@domain/entities/subcategoryEntity'
+import { CategoryModel } from '@framework/models/categoryModel'
 import { SubcategoryModel, SubcategoryModelToken } from '@framework/models/subcategoryModel'
 import { Op } from 'sequelize'
 import { Inject, Service } from 'typedi'
@@ -42,14 +43,15 @@ export class SubcategoryRepository implements ISubcategoryRepository {
 
   async getAll(name: string): Promise<ISubcategory[]> {
     this._logger.info(`class: ${SubcategoryRepository.name} | method: exec | message: starting getAll execution`)
-    let condition
+    const condition = {
+      include: [
+        { model: CategoryModel}
+      ],
+      where : {}
+    }
 
     if (name) {
-      condition = {
-        where: {
-          name
-        }
-      }
+      condition.where = { name }
     }
 
     const categories = await this._subcategoryRepository.findAll(condition)

@@ -26,10 +26,10 @@ export class GetAllCategoryOperation extends BaseOperation {
 
     if (categories && categories.length > 0) {
       const output: CategoryOutput[] = []
-      categories.map(categoria => {
+      categories.map(category => {
         output.push({
-          categoryId: categoria.categoryId,
-          name: categoria.name
+          categoryId: category.categoryId,
+          name: category.name
         } as CategoryOutput)
       })
       

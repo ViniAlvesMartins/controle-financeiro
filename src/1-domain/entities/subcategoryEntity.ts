@@ -5,6 +5,7 @@ export interface ISubcategory {
   subcategoryId: number,
   name: string,
   categoryId: number,
+  Category: ICategory
   createdAt?: Date,
   updatedAt?: Date
 }
@@ -17,12 +18,7 @@ export class SubcategoryEntity extends BaseEntity implements ISubcategory {
   createdAt?: Date
   updatedAt?: Date
 
-  category!: CategoryEntity
-
-  constructor () {
-    super()
-    this.category = new CategoryEntity()
-  }
+  Category!: ICategory
 
   setSubcategory(subcategory: ISubcategory) {
     this.subcategoryId = subcategory.subcategoryId
@@ -32,6 +28,6 @@ export class SubcategoryEntity extends BaseEntity implements ISubcategory {
 
   setCategory(category: ICategory) {
 
-    this.category.setCategory(category)
+    this.Category = category
   }
 }
