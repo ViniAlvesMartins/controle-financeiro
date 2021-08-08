@@ -50,4 +50,23 @@ export const subcategoryHandler = {
       }
     ]
   },
+  updateSubcategory: {
+    handler: `${funcDir}/updateSubcategoryFunction.handler`,
+    events: [
+      {
+        http: {
+          method: 'put',
+          path: 'v1/subcategorias/{subcategoriaId}',
+          cors: true,
+          request: {
+            parameters: {
+              paths: {
+                subcategoriaId: true
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
 }

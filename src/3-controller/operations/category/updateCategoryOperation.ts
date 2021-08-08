@@ -47,5 +47,9 @@ export class UpdateCategoryOperation extends BaseOperation {
     if (!input.name){
       await this.makeInputValidation(`O campo 'nome' é obrigatório`, 'nome')
     }
+
+    if (!input.categoryId){
+      await this.makeInputValidation(`O campo 'categoriaId' tem que ser do tipo númerico`, 'categoriaId')
+    }
   }
 }

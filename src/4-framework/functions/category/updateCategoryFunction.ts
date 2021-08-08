@@ -19,7 +19,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const normalizedInput = httpEventNormalizer(event)
   const input = new UpdateCategoryInput({
     name: normalizedInput.nome,
-    categoryId: normalizedInput.categoriaId
+    categoryId: Number(normalizedInput.categoriaId)
   })
   const response = await updateOperation.exec(input)
 

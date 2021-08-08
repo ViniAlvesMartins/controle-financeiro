@@ -46,7 +46,7 @@ export class GetByIdCategoryOperation extends BaseOperation {
   }
 
   private async inputValidation(input: GetByIdCategoryInput) {
-    if (!input.categoryId || input.categoryId === 0){
+    if (!input.categoryId){
       await this.makeInputValidation(`O campo 'categoriaId' tem que ser do tipo númerico`, 'categoriaId')
     }
   }

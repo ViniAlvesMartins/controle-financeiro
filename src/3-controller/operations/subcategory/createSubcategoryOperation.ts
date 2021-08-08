@@ -1,7 +1,7 @@
 import ILogger, { LoggerToken } from '@business/modules/iLogger'
 import { CreateSubcategoryUseCase, CreateSubcategoryUseCaseToken } from '@business/useCases/subcategory/createSubcategoryUseCase'
 import { CreateSubcategoryInput } from '@controller/serializers/input/subcategory/createSubcategoryInput'
-import { CategoryOutput, CreateSubcategoryOutput } from '@controller/serializers/output/subcategory/createSubcategoryOutput'
+import { UpdateCategoryOutput, CreateSubcategoryOutput } from '@controller/serializers/output/subcategory/createSubcategoryOutput'
 import { BaseOperation, response, statusCode } from '@controller/utils/baseOperation'
 import { CodeErrors } from '@domain/utils/baseErrorList'
 import { Inject, Service } from 'typedi'
@@ -31,7 +31,7 @@ export class CreateSubcategoryOperation extends BaseOperation {
     }
 
     const subcategory = await this._createSubcategoryUseCase.exec(input.categoryId, input.name)
-    this._logger.info(`class: ${CreateSubcategoryOperation.name} | method: exec | message: return useCse ${JSON.stringify(subcategory)}`)
+    this._logger.info(`class: ${CreateSubcategoryOperation.name} | method: exec | message: return useCase ${JSON.stringify(subcategory)}`)
 
     if (subcategory.hasError){
       if (subcategory.error.code === CodeErrors.NON_EXISTENT_VALUE){
@@ -48,7 +48,7 @@ export class CreateSubcategoryOperation extends BaseOperation {
       category: {
         categoryId: subcategory.Category.categoryId,
         name: subcategory.Category.name
-      } as CategoryOutput,
+      } as UpdateCategoryOutput,
       name: subcategory.name
     } as CreateSubcategoryOutput
 

@@ -1,4 +1,4 @@
-export type CreateSubcategoryOutput = {
+export type UpdateSubcategoryOutput = {
   subcategoryId: number,
   category: UpdateCategoryOutput,
   name: string
