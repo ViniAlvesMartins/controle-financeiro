@@ -35,7 +35,11 @@ export class SubcategoryRepository implements ISubcategoryRepository {
   async getById(subcategoryId: number): Promise<ISubcategory | null> {
     this._logger.info(`class: ${SubcategoryRepository.name} | method: exec | message: starting getById execution`)
 
-    const category = await this._subcategoryRepository.findByPk(subcategoryId)
+    const category = await this._subcategoryRepository.findByPk(subcategoryId, {
+      include: [
+        { model: CategoryModel}
+      ]
+    })
     this._logger.info(`class: ${SubcategoryRepository.name} | method: exec | message: getById ${JSON.stringify(category)}`)
     this._logger.info(`class: ${SubcategoryRepository.name} | method: exec | message: finishing getById execution`)
     return category

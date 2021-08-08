@@ -1,5 +1,5 @@
 import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { GetAllSubcategoryUseCase, GetAllSubcategoryUseCaseToken } from '@business/useCases/sucategory/getByAllSubcategoryUseCase'
+import { GetAllSubcategoryUseCase, GetAllSubcategoryUseCaseToken } from '@business/useCases/subcategory/getAllSubcategoryUseCase'
 import { GetAllCategoryInput } from '@controller/serializers/input/category/getAllCategoryInput'
 import { CategoryOutput, SubcategoryOutput } from '@controller/serializers/output/subcategory/getAllSubcategoryOutput'
 import { BaseOperation, response, statusCode } from '@controller/utils/baseOperation'

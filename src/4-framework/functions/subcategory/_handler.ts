@@ -31,4 +31,23 @@ export const subcategoryHandler = {
       }
     ]
   },
+  getByIdSubcategory: {
+    handler: `${funcDir}/getByIdSubcategoryFunction.handler`,
+    events: [
+      {
+        http: {
+          method: 'get',
+          path: 'v1/subcategorias/{subcategoriaId}',
+          cors: true,
+          request: {
+            parameters: {
+              paths : {
+                subcategoriaId: true
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
 }

@@ -3,7 +3,7 @@ import { APIGatewayProxyEvent, APIGatewayProxyHandler, Context } from 'aws-lambd
 import Container from 'typedi'
 import '@framework/repositories/categoryRepository'
 import '@framework/modules/logger'
-import { GetByIdCategoryOperation } from '@controller/operations/category/getByIdCategoryOperation'
+import { GetByIdCategoryOperation} from '@controller/operations/category/getByIdCategoryOperation'
 import { httpEventNormalizer } from '@framework/utils/httpNormalized'
 import db from '@framework/utils/domainDb'
 import { LoggerToken } from '@business/modules/iLogger'
