@@ -1,5 +1,4 @@
-import { baseErrorList } from '@domain/utils/baseErrorList'
-
+import { BaseEntity } from '@domain/utils/baseEntity'
 export interface ICategory {
   categoryId: number,
   name: string,
@@ -7,19 +6,11 @@ export interface ICategory {
   updatedAt?: Date
 }
 
-export class CategoryEntity implements ICategory {
+export class CategoryEntity extends BaseEntity implements ICategory {
   categoryId: number
   name: string
   createdAt?: Date
   updatedAt?: Date
-
-  error: baseErrorList
-  hasError = false
-
-  setError(error: baseErrorList) {
-    this.error = error
-    this.hasError = true
-  }
 
   setCategory(category: ICategory) {
     this.categoryId = category.categoryId

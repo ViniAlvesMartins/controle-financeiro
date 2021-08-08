@@ -1,7 +1,7 @@
 const funcDir = 'src/4-framework/functions/category'
-export const categoriaHandler = {
+export const categoryHandler = {
   create: {
-    handler: `${funcDir}/createFunction.handler`,
+    handler: `${funcDir}/createCategoryFunction.handler`,
     events: [
       {
         http: {
@@ -13,7 +13,7 @@ export const categoriaHandler = {
     ]
   },
   getAll: {
-    handler: `${funcDir}/getAllFunction.handler`,
+    handler: `${funcDir}/getAllCategoryFunction.handler`,
     events: [
       {
         http: {
@@ -32,7 +32,7 @@ export const categoriaHandler = {
     ]
   },
   getById: {
-    handler: `${funcDir}/getByIdFunction.handler`,
+    handler: `${funcDir}/getByIdCategoryFunction.handler`,
     events: [
       {
         http: {
@@ -51,7 +51,7 @@ export const categoriaHandler = {
     ]
   },
   update: {
-    handler: `${funcDir}/updateFunction.handler`,
+    handler: `${funcDir}/updateCategoryFunction.handler`,
     events: [
       {
         http: {
@@ -70,7 +70,7 @@ export const categoriaHandler = {
     ]
   },
   delete: {
-    handler: `${funcDir}/deleteFunction.handler`,
+    handler: `${funcDir}/deleteCategoryFunction.handler`,
     events: [
       {
         http: {

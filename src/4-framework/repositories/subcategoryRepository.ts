@@ -2,6 +2,7 @@ import ILogger, { LoggerToken } from '@business/modules/iLogger'
 import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '@business/repositories/iSubcategoryRepository'
 import { ISubcategory } from '@domain/entities/subcategoryEntity'
 import { SubcategoryModel, SubcategoryModelToken } from '@framework/models/subcategoryModel'
+import { Op } from 'sequelize'
 import { Inject, Service } from 'typedi'
 
 @Service({
@@ -86,12 +87,16 @@ export class SubcategoryRepository implements ISubcategoryRepository {
     return category > 0
   }
 
-  async getByName(name: string): Promise<ISubcategory> {
+  async getByName(name: string, categoryId: number): Promise<ISubcategory> {
     this._logger.info(`class: ${SubcategoryRepository.name} | method: exec | message: starting getByName execution`)
+    this._logger.info(`class: ${SubcategoryRepository.name} | method: exec | message: name ${name} and categoryId ${categoryId}`)
 
     const category = await this._subcategoryRepository.findOne({
       where: {
-        name
+        [Op.and]: [
+          {name},
+          {categoryId}
+        ]
       }
     })
     

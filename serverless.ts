@@ -1,6 +1,8 @@
 import type { AWS } from '@serverless/typescript'
 
-import { categoriaHandler } from '@framework/functions/category/_handler'
+import { categoryHandler } from '@framework/functions/category/_handler'
+import { subcategoryHandler } from '@framework/functions/subcategory/_handler'
+
 
 const serverlessConfiguration: AWS = {
   service: 'controle-financeiro',
@@ -29,7 +31,7 @@ const serverlessConfiguration: AWS = {
     },
     lambdaHashingVersion: '20201221',
   },
-  functions: { ...categoriaHandler },
+  functions: { ...categoryHandler, ...subcategoryHandler },
 }
 
 module.exports = serverlessConfiguration

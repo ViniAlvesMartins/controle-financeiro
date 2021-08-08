@@ -9,5 +9,5 @@ export interface ISubcategoryRepository {
   getAll (name: string): Promise<ISubcategory[]>
   update (input: ISubcategory): Promise<ISubcategory | null>
   delete (categoryId: number): Promise<boolean>
-  getByName (name: string): Promise<ISubcategory | null>
+  getByName (name: string, categoryId: number): Promise<ISubcategory | null>
 }
