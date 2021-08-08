@@ -1,6 +1,6 @@
 import type { AWS } from '@serverless/typescript'
 
-import { categoriaHandler } from '@framework/functions/categoria/_handler'
+import { categoriaHandler } from '@framework/functions/category/_handler'
 
 const serverlessConfiguration: AWS = {
   service: 'controle-financeiro',

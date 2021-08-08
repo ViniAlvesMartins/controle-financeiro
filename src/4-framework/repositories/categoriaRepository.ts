@@ -1,81 +1,102 @@
 import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { ICategoriaRepository, ICategoriaRepositoryToken } from '@business/repositories/iCategoriaRepository'
-import { ICategoria } from '@domain/entities/categoriaEntity'
-import { CategoriaModel, CategoriaModelToken } from '@framework/models/categoriaModel'
+import { ICategoryRepository, ICategoryRepositoryToken } from '@business/repositories/iCategoryRepository'
+import { ICategory } from '@domain/entities/categoryEntity'
+import { CategoryModel, CategoryModelToken } from '@framework/models/categoryModel'
 import { Inject, Service } from 'typedi'
 
 @Service({
   transient: false,
-  id: ICategoriaRepositoryToken
+  id: ICategoryRepositoryToken
 })
-export class CategoriaRepository implements ICategoriaRepository {
+export class CategoryRepository implements ICategoryRepository {
 
-  private readonly categoriaRepository!: typeof CategoriaModel
+  private readonly categoryRepository!: typeof CategoryModel
 
   @Inject(LoggerToken)
   private readonly _logger!: ILogger
 
-  constructor(@Inject(CategoriaModelToken) repository: typeof CategoriaModel) {
-    this.categoriaRepository = repository
+  constructor(@Inject(CategoryModelToken) repository: typeof CategoryModel) {
+    this.categoryRepository = repository
   }
 
-  async create(input: ICategoria): Promise<ICategoria | null> {
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: iniciando a execução do create`)
+  async create(input: ICategory): Promise<ICategory | null> {
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: starting create execution`)
     
-    const categoria = await this.categoriaRepository.create(input)
+    const category = await this.categoryRepository.create(input)
 
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: create ${JSON.stringify(categoria)}`)
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: finalizando a execução do create`)
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: create ${JSON.stringify(category)}`)
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: finishing create execution`)
 
-    return categoria
+    return category
   }
 
-  async getById(id: number): Promise<ICategoria | null> {
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: iniciando a execução do getById`)
+  async getById(categoryId: number): Promise<ICategory | null> {
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: starting getById execution`)
 
-    const categoria = await this.categoriaRepository.findByPk(id)
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: getById ${JSON.stringify(categoria)}`)
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: finalizando a execução do getById`)
-    return categoria
+    const category = await this.categoryRepository.findByPk(categoryId)
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: getById ${JSON.stringify(category)}`)
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: finishing getById execution`)
+    return category
   }
 
-  async getAll(nome: string): Promise<ICategoria[]> {
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: iniciando a execução do getAll`)
+  async getAll(name: string): Promise<ICategory[]> {
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: starting getAll execution`)
     let condition
 
-    if (nome) {
+    if (name) {
       condition = {
         where: {
-          nome
+          name
         }
       }
     }
 
-    const categorias = await this.categoriaRepository.findAll(condition)
-
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: finalizando a execução do getAll`)
-    return categorias
+    const categories = await this.categoryRepository.findAll(condition)
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: getAll ${JSON.stringify(categories)}`)
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: finishing getAll execution`)
+    return categories
   }
 
-  update(input: ICategoria): Promise<ICategoria | null> {
-    throw new Error('Method not implemented.')
-  }
-
-  delete(id: number): Promise<boolean> {
-    throw new Error('Method not implemented.')
-  }
-
-  async getByName(nome: string): Promise<ICategoria> {
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: iniciando a execução do getById`)
-
-    const categoria = await this.categoriaRepository.findOne({
+  async update(input: ICategory): Promise<ICategory | null> {
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: starting update execution`)
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: input ${JSON.stringify(input)}`)
+    
+    const category = await this.categoryRepository.update({
+      name: input.name,
+      categoryId: input.categoryId
+    }, {
+      returning: true,
       where: {
-        nome
+      categoryId: input.categoryId
+    }})
+    
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: update ${JSON.stringify(category)}`)
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: finishing update execution`)
+    return input
+  }
+
+  async delete(categoryId: number): Promise<boolean> {
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: starting delete execution`)
+
+    const category = await this.categoryRepository.destroy({ where: {
+      categoryId
+    }})
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: delete ${JSON.stringify(category)}`)
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: finishing delete execution`)
+    return category > 0
+  }
+
+  async getByName(name: string): Promise<ICategory> {
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: starting getByName execution`)
+
+    const category = await this.categoryRepository.findOne({
+      where: {
+        name
       }
     })
     
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: getById ${JSON.stringify(categoria)}`)
-    this._logger.info(`class: ${CategoriaRepository.name} | method: exec | message: finalizando a execução do getById`)
-    return categoria
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: getByName ${JSON.stringify(category)}`)
+    this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: finishing getByName execution`)
+    return category
   }
 }

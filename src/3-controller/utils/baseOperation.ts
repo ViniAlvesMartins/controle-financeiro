@@ -1,4 +1,4 @@
-import { baseErrorList } from '@domain/utils/baseErrorList'
+import { baseErrorList, CodeErrors } from '@domain/utils/baseErrorList'
 
 export enum statusCode {
   SUCCESS = 200,
@@ -10,7 +10,7 @@ export enum statusCode {
 } 
 
 export class BaseOperation {
-  protected validacoes: baseErrorList[] = []
+  protected validations: baseErrorList[] = []
 
   protected async makeResponse(data: any, statusCode: number ): Promise<response> {
     return {
@@ -21,7 +21,16 @@ export class BaseOperation {
     }
   }
 
-  protected async makeResponseValidation(error: baseErrorList[]): Promise<response>{
+  protected async makeResponseError(data: any, statusCode: number ): Promise<response> {
+    return {
+      statusCode,
+      body: JSON.stringify({
+        data
+      })
+    }
+  }
+
+  protected async makeResponseValidations(error: baseErrorList[]): Promise<response>{
       return {
         statusCode: 400,
         body: JSON.stringify({
@@ -30,10 +39,11 @@ export class BaseOperation {
       }
   }
 
-  protected async makeInputValidation(mensagem: string): Promise<void> {
-    this.validacoes.push({
-      codigo: 'erro_validacao',
-      mensagem
+  protected async makeInputValidation(message: string, field: string): Promise<void> {
+    this.validations.push({
+      code: CodeErrors.VALIDATION_ERROR,
+      message,
+      field
     } as baseErrorList)
   }
 
