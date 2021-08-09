@@ -11,5 +11,24 @@ export const releaseHandler = {
         }
       }
     ]
-  }
+  },
+  getByIdRelease: {
+    handler: `${funcDir}/getByIdReleaseFunction.handler`,
+    events: [
+      {
+        http: {
+          method: 'get',
+          path: 'v1/lancamentos/{lancamentoId}',
+          cors: true,
+          request: {
+            parameters: {
+              paths : {
+                lancamentoId: true
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
 }
