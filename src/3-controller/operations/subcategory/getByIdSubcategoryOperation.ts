@@ -30,7 +30,6 @@ export class GetByIdSubcategoryOperation extends BaseOperation {
     }
 
     const subcategory = await this._getByIdSubcategoryUseCase.exec(input.subcategoryId)
-    console.log(`after usecase`)
 
     if (subcategory) {
       const response = {

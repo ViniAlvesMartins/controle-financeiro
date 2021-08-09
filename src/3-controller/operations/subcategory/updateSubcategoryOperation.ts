@@ -1,7 +1,7 @@
 import ILogger, { LoggerToken } from '@business/modules/iLogger'
 import { UpdateSubcategoryUseCase, UpdateSubcategoryUseCaseToken } from '@business/useCases/subcategory/updateSubcategoryUseCase'
 import { UpdateSubcategoryInput } from '@controller/serializers/input/subcategory/updateSubcategoryInput'
-import { UpdateCategoryOutput, CreateSubcategoryOutput } from '@controller/serializers/output/subcategory/createSubcategoryOutput'
+import { CreateCategoryOutput, CreateSubcategoryOutput } from '@controller/serializers/output/subcategory/createSubcategoryOutput'
 import { BaseOperation, response, statusCode } from '@controller/utils/baseOperation'
 import { CodeErrors } from '@domain/utils/baseErrorList'
 import { Inject, Service } from 'typedi'
@@ -48,7 +48,7 @@ export class UpdateSubcategoryOperation extends BaseOperation {
       category: {
         categoryId: subcategory.Category.categoryId,
         name: subcategory.Category.name
-      } as UpdateCategoryOutput,
+      } as CreateCategoryOutput,
       name: subcategory.name
     } as CreateSubcategoryOutput
 

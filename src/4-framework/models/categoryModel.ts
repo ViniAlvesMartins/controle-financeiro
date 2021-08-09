@@ -1,8 +1,6 @@
 import { ICategory } from '@domain/entities/categoryEntity'
-import { ExactlySameKeys } from '@framework/utils/exactlySameKeys'
 import { DataTypes, Model, Sequelize } from 'sequelize'
 import Container, { Service, Token } from 'typedi'
-import { SubcategoryModel } from './subcategoryModel'
 
 export class CategoryModel extends Model {}
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -12,7 +10,7 @@ export const CategoryModelToken = new Token<typeof CategoryModel>(
   'typeof CategoryModel'
 )
 
-const schema: ExactlySameKeys<ICategory> = {
+const schema = {
   categoryId: {
     type: DataTypes.INTEGER,
     field: 'category_id',

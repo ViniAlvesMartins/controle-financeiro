@@ -49,7 +49,7 @@ export class SubcategoryDefine {
       tableName: 'Subcategories'
     })
     SubcategoryModel.sync()
-    SubcategoryModel.belongsTo(CategoryModel)
+    SubcategoryModel.belongsTo(CategoryModel, { foreignKey: 'category_id' })
     Container.set(SubcategoryModelToken, SubcategoryModel)
   }
 }
