@@ -69,4 +69,23 @@ export const subcategoryHandler = {
       }
     ]
   },
+  deleteSubcategory: {
+    handler: `${funcDir}/deleteSubcategoryFunction.handler`,
+    events: [
+      {
+        http: {
+          method: 'delete',
+          path: 'v1/subcategorias/{subcategoriaId}',
+          cors: true,
+          request: {
+            parameters: {
+              paths : {
+                subcategoriaId: true
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
 }

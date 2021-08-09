@@ -61,8 +61,9 @@ export class CreateSubcategoryOperation extends BaseOperation {
       await this.makeInputValidation(`O campo 'nome' é obrigatório`, 'nome')
     }
 
-    console.log('input.categoryId')
-    console.log(input.categoryId)
+    if (!input.categoryId){
+      await this.makeInputValidation(`O campo 'categoriaId' tem que ser do tipo númerico`, 'categoriaId')
+    }
   }
 
 }

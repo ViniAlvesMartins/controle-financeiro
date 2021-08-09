@@ -21,7 +21,9 @@ const schema = {
   categoryId: {
     type: DataTypes.INTEGER,
     field: 'category_id',
-    allowNull: false
+    allowNull: false,
+    references: { model: 'Categories', key: 'category_id'},
+    onDelete: 'CASCADE',
   },
   name: {
     type: DataTypes.STRING,
@@ -47,9 +49,7 @@ export class SubcategoryDefine {
       tableName: 'Subcategories'
     })
     SubcategoryModel.sync()
-    SubcategoryModel.belongsTo(CategoryModel, {
-      foreignKey: 'category_id'
-    })
+    SubcategoryModel.belongsTo(CategoryModel)
     Container.set(SubcategoryModelToken, SubcategoryModel)
   }
 }

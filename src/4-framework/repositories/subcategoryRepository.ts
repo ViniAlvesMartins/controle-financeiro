@@ -98,6 +98,7 @@ export class SubcategoryRepository implements ISubcategoryRepository {
     this._logger.info(`class: ${SubcategoryRepository.name} | method: exec | message: name ${name} and categoryId ${categoryId}`)
 
     const category = await this._subcategoryRepository.findOne({
+      attributes: ['subcategoryId'],
       where: {
         [Op.and]: [
           {name},
