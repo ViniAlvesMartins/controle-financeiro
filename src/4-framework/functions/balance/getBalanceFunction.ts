@@ -20,7 +20,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const input = new GetBalanceInput({
     startDate: normalizedInput.dataInicio,
     endDate: normalizedInput.dataFim,
-    categoryId: Number(normalizedInput.categoriaId)
+    categoryId: Number(normalizedInput.categoryId)
   })
   const response = await getBalanceOperation.exec(input)
 

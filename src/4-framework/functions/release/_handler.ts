@@ -6,7 +6,7 @@ export const releaseHandler = {
       {
         http: {
           method: 'post',
-          path: 'v1/lancamentos',
+          path: 'v1/releases',
           cors: true
         }
       }
@@ -18,12 +18,17 @@ export const releaseHandler = {
       {
         http: {
           method: 'get',
-          path: 'v1/lancamentos/{lancamentoId}',
+          path: 'v1/releases/{releaseId}',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               paths : {
-                lancamentoId: true
+                releaseId: true
               }
             }
           }
@@ -37,14 +42,19 @@ export const releaseHandler = {
       {
         http: {
           method: 'get',
-          path: 'v1/lancamentos',
+          path: 'v1/releases',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               querystrings : {
-                nome: false,
-                dataInicio:false,
-                dataFim: false
+                name: false,
+                startDate:false,
+                endDate: false
               }
             }
           }
@@ -58,12 +68,17 @@ export const releaseHandler = {
       {
         http: {
           method: 'put',
-          path: 'v1/lancamentos/{lancamentoId}',
+          path: 'v1/releases/{releaseId}',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               paths: {
-                lancamentoId: true
+                releaseId: true
               }
             }
           }
@@ -77,12 +92,17 @@ export const releaseHandler = {
       {
         http: {
           method: 'delete',
-          path: 'v1/lancamentos/{lancamentoId}',
+          path: 'v1/releases/{releaseId}',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               paths : {
-                lancamentoId: true
+                releaseId: true
               }
             }
           }

@@ -44,7 +44,7 @@ export class DeleteSubcategoryOperation extends BaseOperation {
 
   private async inputValidation(input: DeleteSubcategoryInput) {
     if (!input.subcategoryId){
-      await this.makeInputValidation(`O campo 'subcategoriaId' tem que ser do tipo númerico`, 'subcategoriaId')
+      await this.makeInputValidation(`O campo 'subcategoryId' tem que ser do tipo númerico`, 'subcategoryId')
     }
 
     if (input.subcategoryId <= 0){

@@ -6,7 +6,7 @@ export const categoryHandler = {
       {
         http: {
           method: 'post',
-          path: 'v1/categorias',
+          path: 'v1/categories',
           cors: true
         }
       }
@@ -18,12 +18,17 @@ export const categoryHandler = {
       {
         http: {
           method: 'get',
-          path: 'v1/categorias',
+          path: 'v1/categories',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               querystrings : {
-                nome: false
+                name: false
               }
             }
           }
@@ -37,12 +42,17 @@ export const categoryHandler = {
       {
         http: {
           method: 'get',
-          path: 'v1/categorias/{categoriaId}',
+          path: 'v1/categories/{categoryId}',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               paths : {
-                categoriaId: true
+                categoryId: true
               }
             }
           }
@@ -56,12 +66,17 @@ export const categoryHandler = {
       {
         http: {
           method: 'put',
-          path: 'v1/categorias/{categoriaId}',
+          path: 'v1/categories/{categoryId}',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               paths: {
-                categoriaId: true
+                categoryId: true
               }
             }
           }
@@ -75,12 +90,17 @@ export const categoryHandler = {
       {
         http: {
           method: 'delete',
-          path: 'v1/categorias/{categoriaId}',
+          path: 'v1/categories/{categoryId}',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               paths : {
-                categoriaId: true
+                categoryId: true
               }
             }
           }

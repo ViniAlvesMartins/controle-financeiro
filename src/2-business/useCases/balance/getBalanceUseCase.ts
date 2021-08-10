@@ -40,7 +40,7 @@ export class GetBalanceUseCase extends BaseUseCase<IRelease> {
       if(!existingCategory) {
         this._releaseEntity.setError({
           code: CodeErrors.NON_EXISTENT_VALUE,
-          message: `Categoria com categoriaId: ${input.categoryId} não existe`
+          message: `Categoria com categoryId: ${input.categoryId} não existe`
         } as baseErrorList)
   
         return this._releaseEntity

@@ -47,7 +47,7 @@ export class CreateCategoryOperation extends BaseOperation {
 
   private async inputValidation(input: CreateCategoryInput) {
     if (!input.name){
-      await this.makeInputValidation(`O campo 'nome' é obrigatório`, 'nome')
+      await this.makeInputValidation(`O campo 'name' é obrigatório`, 'name')
     }
   }
 }

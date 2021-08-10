@@ -58,19 +58,19 @@ export class UpdateSubcategoryOperation extends BaseOperation {
 
   private async inputValidation(input: UpdateSubcategoryInput) {
     if (!input.name){
-      await this.makeInputValidation(`O campo 'nome' é obrigatório`, 'nome')
+      await this.makeInputValidation(`O campo 'name' é obrigatório`, 'name')
     }
 
     if (!input.categoryId){
-      await this.makeInputValidation(`O campo 'categoriaId' tem que ser do tipo númerico`, 'categoriaId')
+      await this.makeInputValidation(`O campo 'categoryId' tem que ser do tipo númerico`, 'categoryId')
     }
 
     if (input.categoryId <= 0){
-      await this.makeInputValidation(`O campo 'categoriaId' não pode ser 0`, 'categoriaId')
+      await this.makeInputValidation(`O campo 'categoryId' não pode ser 0`, 'categoryId')
     }
 
     if (!input.subcategoryId){
-      await this.makeInputValidation(`O campo 'subcategoriaId' tem que ser do tipo númerico`, 'subcategoriaId')
+      await this.makeInputValidation(`O campo 'subcategoryId' tem que ser do tipo númerico`, 'subcategoryId')
     }
 
     if (input.subcategoryId <= 0){

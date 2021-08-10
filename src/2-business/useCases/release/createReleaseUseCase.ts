@@ -34,9 +34,10 @@ export class CreateReleaseUseCase extends BaseUseCase<IRelease> {
     const existingSubcategory = await this._subcategoryRepository.getById(input.subcategoryId)
 
     if(!existingSubcategory) {
+      this._logger.error(`class: ${CreateReleaseUseCase.name} | method: exec | message: non-existent subcategory ${input.subcategoryId} `)
       this._releaseEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,
-        message: `Subcategoria com subcategoriaId: ${input.subcategoryId} não existe`
+        message: `Subcategoria com subcategoryId: ${input.subcategoryId} não existe`
       } as baseErrorList)
 
       return this._releaseEntity

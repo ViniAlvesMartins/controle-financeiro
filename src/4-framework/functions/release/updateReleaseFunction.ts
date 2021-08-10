@@ -18,13 +18,12 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
   const updateOperation = Container.get(UpdateReleaseOperation)
   const normalizedInput = httpEventNormalizer(event)
-  console.log(`normalizedInput ${JSON.stringify(normalizedInput)}`)
   const input = new UpdateReleaseInput({
-    releaseId: Number(normalizedInput.lancamentoId),
+    releaseId: Number(normalizedInput.releaseId),
     value: Number(normalizedInput.valor),
-    comment: normalizedInput.comentario,
-    date: normalizedInput.data,
-    subcategoryId: Number(normalizedInput.subcategoriaId)
+    comment: normalizedInput.comment,
+    date: normalizedInput.date,
+    subcategoryId: Number(normalizedInput.subcategoryId)
   })
   const response = await updateOperation.exec(input)
 

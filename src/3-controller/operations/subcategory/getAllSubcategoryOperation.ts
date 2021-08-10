@@ -23,7 +23,6 @@ export class GetAllSubcategoryOperation extends BaseOperation {
     this._logger.info(`class: ${GetAllSubcategoryOperation.name} | method: exec | message: input ${JSON.stringify(input)}`)
 
     const subcategories = await this._getAllSubcategoryUseCase.exec(input.name)
-    console.log(`after usecase`)
 
     if (subcategories && subcategories.length > 0) {
       const output: SubcategoryOutput[] = []

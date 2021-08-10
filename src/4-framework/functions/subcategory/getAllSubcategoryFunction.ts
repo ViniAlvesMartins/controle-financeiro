@@ -18,7 +18,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const getAllSubcategoryOperation = Container.get(GetAllSubcategoryOperation)
   const normalizedInput = httpEventNormalizer(event)
   const input = new GetAllSubcategoryInput({
-    name: normalizedInput.nome
+    name: normalizedInput.name
   })
   const response = await getAllSubcategoryOperation.exec(input)
 

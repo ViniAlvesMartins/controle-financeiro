@@ -18,9 +18,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
   const deleteSubcategoryOperation = Container.get(DeleteSubcategoryOperation)
   const normalizedInput = httpEventNormalizer(event)
-  const subcategoryId = Number(normalizedInput.subcategoriaId)
   const input = new DeleteSubcategoryInput({
-    subcategoryId: subcategoryId
+    subcategoryId: Number(normalizedInput.subcategoryId)
   })
   const response = await deleteSubcategoryOperation.exec(input)
 

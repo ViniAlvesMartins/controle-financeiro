@@ -34,9 +34,10 @@ export class UpdateReleaseUseCase extends BaseUseCase<IRelease> {
     const existingRelease = await this._releaseRepository.getById(input.releaseId)
 
     if(!existingRelease) {
+      this._logger.error(`class: ${UpdateReleaseUseCase.name} | method: exec | message: non-existent release ${input.releaseId} `)
       this._releaseEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,
-        message: `Lançamento com lancamentoId: ${input.releaseId} não existe`
+        message: `Lançamento com releaseId: ${input.releaseId} não existe`
       } as baseErrorList)
 
       return this._releaseEntity
@@ -44,11 +45,11 @@ export class UpdateReleaseUseCase extends BaseUseCase<IRelease> {
 
     if(input.subcategoryId){
       const existingSubcategory = await this._subcategoryRepository.getById(input.subcategoryId)
-
       if(!existingSubcategory) {
+        this._logger.error(`class: ${UpdateReleaseUseCase.name} | method: exec | message: non-existent subcategory ${input.subcategoryId} `)
         this._releaseEntity.setError({
           code: CodeErrors.NON_EXISTENT_VALUE,
-          message: `Subcategoria com subcategoriaId: ${input.subcategoryId} não existe`
+          message: `Subcategoria com subcategoryId: ${input.subcategoryId} não existe`
         } as baseErrorList)
   
         return this._releaseEntity

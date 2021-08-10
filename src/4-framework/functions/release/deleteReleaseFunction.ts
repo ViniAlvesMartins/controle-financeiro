@@ -17,9 +17,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
   const deleteReleaseOperation = Container.get(DeleteReleaseOperation)
   const normalizedInput = httpEventNormalizer(event)
-  const releaseId = Number(normalizedInput.lancamentoId)
   const input = new DeleteReleaseInput({
-    releaseId: releaseId
+    releaseId: Number(normalizedInput.releaseId)
   })
   const response = await deleteReleaseOperation.exec(input)
 

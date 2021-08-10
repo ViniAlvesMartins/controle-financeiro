@@ -19,12 +19,11 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
   const createOperation = Container.get(CreateReleaseOperation)
   const normalizedInput = httpEventNormalizer(event)
-  console.log(`normalizedInput ${JSON.stringify(normalizedInput)}`)
   const input = new CreateReleaseInput({
     value: Number(normalizedInput.valor),
-    comment: normalizedInput.comentario,
-    date: normalizedInput.data,
-    subcategoryId: Number(normalizedInput.subcategoriaId)
+    comment: normalizedInput.comment,
+    date: normalizedInput.date,
+    subcategoryId: Number(normalizedInput.subcategoryId)
   })
   const response = await createOperation.exec(input)
 

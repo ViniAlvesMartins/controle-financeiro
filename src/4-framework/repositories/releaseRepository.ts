@@ -73,7 +73,6 @@ export class ReleaseRepository implements IReleaseRepository {
         }
       }
     }else if (filters.startDate && isValid(filters.startDate)){
-      console.log(`.:: startDate ${filters.startDate} ::.`)
       condition.where = {
         date: {
           [Op.gte]: filters.startDate

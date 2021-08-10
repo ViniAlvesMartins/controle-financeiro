@@ -46,7 +46,7 @@ export class DeleteReleaseOperation extends BaseOperation {
     if (!input.releaseId){
       await this.makeInputValidation(`O campo 'releaseId' tem que ser do tipo númerico`, 'releaseId')
     }
-    console.log(`releaseId ${input.releaseId}`)
+    
     if (input.releaseId <= 0){
       await this.makeInputValidation(`O campo 'releaseId' não pode ser 0`, 'releaseId')
     }

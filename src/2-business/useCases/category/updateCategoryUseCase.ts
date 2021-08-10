@@ -29,9 +29,10 @@ export class UpdateCategoryUseCase extends BaseUseCase<ICategory> {
     const existingCategory = await this._categoryRepository.getById(categoryId)
 
     if(!existingCategory) {
+      this._logger.error(`class: ${UpdateCategoryUseCase.name} | method: exec | message: non-existent category ${name} `)
       this._categoryEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,
-        message: `Categoria com categoriaId: ${categoryId} não existe`
+        message: `Categoria com categoryId: ${categoryId} não existe`
       } as baseErrorList)
 
       return this._categoryEntity
@@ -40,6 +41,8 @@ export class UpdateCategoryUseCase extends BaseUseCase<ICategory> {
     const existingCategoryWithName = await this._categoryRepository.getByName(name)
 
     if(existingCategoryWithName) {
+      this._logger.error(`class: ${UpdateCategoryUseCase.name} | method: exec | message: existing category with name ${name} `)
+
       this._categoryEntity.setError({
         code: CodeErrors.EXISTING_VALUE,
         message: `Categoria ${name} já existe`

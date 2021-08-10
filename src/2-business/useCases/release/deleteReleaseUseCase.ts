@@ -29,9 +29,10 @@ export class DeleteReleaseUseCase extends BaseUseCase<IRelease> {
     const existingRelease = await this._releaseRepository.getById(releaseId)
 
     if(!existingRelease) {
+      this._logger.error(`class: ${DeleteReleaseUseCase.name} | method: exec | message: non-existent release ${releaseId} `)
       this._releaseEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,
-        message: `Lançamento com lancamentoId: ${releaseId} não existe`
+        message: `Lançamento com releaseId: ${releaseId} não existe`
       } as baseErrorList)
 
       return this._releaseEntity

@@ -20,10 +20,15 @@ export const subcategoryHandler = {
           method: 'get',
           path: 'v1/subcategorias',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               querystrings : {
-                nome: false
+                name: false
               }
             }
           }
@@ -37,12 +42,17 @@ export const subcategoryHandler = {
       {
         http: {
           method: 'get',
-          path: 'v1/subcategorias/{subcategoriaId}',
+          path: 'v1/subcategorias/{subcategoryId}',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               paths : {
-                subcategoriaId: true
+                subcategoryId: true
               }
             }
           }
@@ -56,12 +66,17 @@ export const subcategoryHandler = {
       {
         http: {
           method: 'put',
-          path: 'v1/subcategorias/{subcategoriaId}',
+          path: 'v1/subcategorias/{subcategoryId}',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               paths: {
-                subcategoriaId: true
+                subcategoryId: true
               }
             }
           }
@@ -75,12 +90,17 @@ export const subcategoryHandler = {
       {
         http: {
           method: 'delete',
-          path: 'v1/subcategorias/{subcategoriaId}',
+          path: 'v1/subcategorias/{subcategoryId}',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               paths : {
-                subcategoriaId: true
+                subcategoryId: true
               }
             }
           }

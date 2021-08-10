@@ -41,7 +41,7 @@ export class UpdateSubcategoryUseCase extends BaseUseCase<ISubcategory> {
     if(!existingSubcategory) {
       this._subcategoryEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,
-        message: `Subcategoria com subcategoriaId: ${input.subcategoryId} não existe`
+        message: `Subcategoria com subcategoryId: ${input.subcategoryId} não existe`
       } as baseErrorList)
 
       return this._subcategoryEntity
@@ -52,7 +52,7 @@ export class UpdateSubcategoryUseCase extends BaseUseCase<ISubcategory> {
     if(!existingCategory) {
       this._subcategoryEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,
-        message: `Categoria com categoriaId: ${input.categoryId} não existe`
+        message: `Categoria com categoryId: ${input.categoryId} não existe`
       } as baseErrorList)
 
       return this._subcategoryEntity
@@ -63,7 +63,7 @@ export class UpdateSubcategoryUseCase extends BaseUseCase<ISubcategory> {
     if(existingSubcategoryWithName) {
       this._subcategoryEntity.setError({
         code: CodeErrors.EXISTING_VALUE,
-        message: `Subcategoria com categoryId: ${input.categoryId} e nome ${input.name} já existe`
+        message: `Subcategoria com categoryId: ${input.categoryId} e name ${input.name} já existe`
       } as baseErrorList)
 
       return this._subcategoryEntity

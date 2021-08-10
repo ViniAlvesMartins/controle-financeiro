@@ -18,9 +18,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
   const getByIdReleaseOperation = Container.get(GetByIdReleaseOperation)
   const normalizedInput = httpEventNormalizer(event)
-  const releaseId = Number(normalizedInput.lancamentoId)
   const input = new GetByIdReleaseInput({
-    releaseId: releaseId
+    releaseId: Number(normalizedInput.releaseId)
   })
   const response = await getByIdReleaseOperation.exec(input)
 

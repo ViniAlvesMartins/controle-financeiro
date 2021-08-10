@@ -6,14 +6,19 @@ export const balanceHandler = {
       {
         http: {
           method: 'get',
-          path: 'v1/balanco',
+          path: 'v1/balances',
           cors: true,
+          authorizer: {
+            name: 'auth',
+            type: 'request',
+            identitySource: 'method.request.querystring.token'
+          },
           request: {
             parameters: {
               querystrings : {
-                dataInicio:true,
-                dataFim: true,
-                categoriaId: false
+                startDate:true,
+                endDate: true,
+                categoryId: false
               }
             }
           }

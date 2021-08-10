@@ -35,7 +35,7 @@ export class DeleteSubcategoryUseCase extends BaseUseCase<ISubcategory> {
     if(!existingSubcategory) {
       this._subcategoryEntity.setError({
         code: CodeErrors.EXISTING_VALUE,
-        message: `Subcategoria com o subcategoria: ${subcategoryId} não existe`
+        message: `Subcategoria com o subcategoryId: ${subcategoryId} não existe`
       } as baseErrorList)
 
       return this._subcategoryEntity
@@ -46,7 +46,7 @@ export class DeleteSubcategoryUseCase extends BaseUseCase<ISubcategory> {
     if(existingRelease) {
       this._subcategoryEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,
-        message: `Existe lançamento para a subcategoriaId: ${subcategoryId}`
+        message: `Existe lançamento para a subcategoryId: ${subcategoryId}`
       } as baseErrorList)
 
       return this._subcategoryEntity

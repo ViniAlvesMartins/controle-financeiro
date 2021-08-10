@@ -4,6 +4,7 @@ import { categoryHandler } from '@framework/functions/category/_handler'
 import { subcategoryHandler } from '@framework/functions/subcategory/_handler'
 import { releaseHandler } from '@framework/functions/release/_handler'
 import { balanceHandler } from '@framework/functions/balance/_handler'
+import { authHandler } from '@framework/functions/auth/_handler'
 
 const serverlessConfiguration: AWS = {
   service: 'controle-financeiro',
@@ -28,7 +29,8 @@ const serverlessConfiguration: AWS = {
       DATABASE_PORT: '33306',
       DATABASE_USER: 'root',
       DATABASE_PASSWORD: 'financeiro',
-      DATABASE: 'financeiro'
+      DATABASE: 'financeiro',
+      API_KEY: 'aXRhw7o='
     },
     lambdaHashingVersion: '20201221',
   },
@@ -36,7 +38,8 @@ const serverlessConfiguration: AWS = {
     ...categoryHandler,
     ...subcategoryHandler,
     ...releaseHandler,
-    ...balanceHandler
+    ...balanceHandler,
+    ...authHandler
   },
 }
 

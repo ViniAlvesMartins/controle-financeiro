@@ -69,11 +69,11 @@ export class UpdateReleaseOperation extends BaseOperation {
     }
 
     if (input.date && !isValid(new Date(input.date))){
-      await this.makeInputValidation(`O campo 'data' é inválido`, 'data')
+      await this.makeInputValidation(`O campo 'date' é inválido`, 'date')
     }
 
     if (input.subcategoryId && input.subcategoryId <= 0){
-      await this.makeInputValidation(`O campo 'subcategoriaId' não pode ser 0`, 'subcategoriaId')
+      await this.makeInputValidation(`O campo 'subcategoryId' não pode ser 0`, 'subcategoryId')
     }
   }
 

@@ -49,11 +49,11 @@ export class GetByIdSubcategoryOperation extends BaseOperation {
 
   private async inputValidation(input: GetByIdSubcategoryInput) {
     if (!input.subcategoryId){
-      await this.makeInputValidation(`O campo 'subcategoriaId' tem que ser do tipo númerico`, 'subcategoriaId')
+      await this.makeInputValidation(`O campo 'subcategoryId' tem que ser do tipo númerico`, 'subcategoryId')
     }
 
     if (input.subcategoryId <= 0){
-      await this.makeInputValidation(`O campo 'subcategoriaId' não pode ser 0`, 'subcategoriaId')
+      await this.makeInputValidation(`O campo 'subcategoryId' não pode ser 0`, 'subcategoryId')
     }
   }
 }

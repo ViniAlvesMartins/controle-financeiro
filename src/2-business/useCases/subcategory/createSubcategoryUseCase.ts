@@ -33,9 +33,10 @@ export class CreateSubcategoryUseCase extends BaseUseCase<ISubcategory> {
     const existingCategory = await this._categoryRepository.getById(categoryId)
 
     if(!existingCategory) {
+      this._logger.error(`class: ${CreateSubcategoryUseCase.name} | method: exec | message: non-existent category ${categoryId} `)
       this._subcategoryEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,
-        message: `Categoria com categoriaId: ${categoryId} não existe`
+        message: `Categoria com categoryId: ${categoryId} não existe`
       } as baseErrorList)
 
       return this._subcategoryEntity
@@ -44,6 +45,7 @@ export class CreateSubcategoryUseCase extends BaseUseCase<ISubcategory> {
     const existingSubcategory = await this._subcategoryRepository.getByName(name, categoryId)
 
     if(existingSubcategory) {
+      this._logger.error(`class: ${CreateSubcategoryUseCase.name} | method: exec | message: existenting subcategory ${existingSubcategory.subcategoryId} `)
       this._subcategoryEntity.setError({
         code: CodeErrors.EXISTING_VALUE,
         message: `Subcategoria ${name} já existe para a categoria ${existingCategory.name}`
