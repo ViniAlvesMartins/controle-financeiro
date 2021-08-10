@@ -18,7 +18,6 @@ export class CreateReleaseUseCase extends BaseUseCase<IRelease> {
   @Inject(IReleaseRepositoryToken)
   private readonly _releaseRepository!: IReleaseRepository
 
-
   @Inject(LoggerToken)
   private readonly _logger!: ILogger
   

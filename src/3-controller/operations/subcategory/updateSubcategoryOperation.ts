@@ -65,8 +65,16 @@ export class UpdateSubcategoryOperation extends BaseOperation {
       await this.makeInputValidation(`O campo 'categoriaId' tem que ser do tipo númerico`, 'categoriaId')
     }
 
+    if (input.categoryId > 0){
+      await this.makeInputValidation(`O campo 'categoriaId' não pode ser 0`, 'categoriaId')
+    }
+
     if (!input.subcategoryId){
       await this.makeInputValidation(`O campo 'subcategoriaId' tem que ser do tipo númerico`, 'subcategoriaId')
+    }
+
+    if (input.subcategoryId > 0){
+      await this.makeInputValidation(`O campo 'subcategoryId' não pode ser 0`, 'subcategoryId')
     }
   }
 

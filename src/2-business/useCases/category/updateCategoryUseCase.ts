@@ -41,7 +41,9 @@ export class UpdateCategoryUseCase extends BaseUseCase<ICategory> {
 
       return categoryEntity
     }
-    existingCategory.name = name
+    if(name) {
+      existingCategory.name = name
+    }
     const category = await this._categoryRepository.update(existingCategory)
 
     this._logger.info(`class: ${UpdateCategoryUseCase.name} | method: exec | message: finishing useCase execution`)

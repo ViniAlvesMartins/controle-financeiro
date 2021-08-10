@@ -70,8 +70,12 @@ export class UpdateSubcategoryUseCase extends BaseUseCase<ISubcategory> {
       return this._subcategoryEntity
     }
 
-    existingSubcategory.name = input.name
-    existingSubcategory.categoryId = input.categoryId
+    if(input.name){
+      existingSubcategory.name = input.name
+    }
+    if(input.categoryId){
+      existingSubcategory.categoryId = input.categoryId
+    }
     const subcategory = await this._subcategoryRepository.update(existingSubcategory)
 
     this._subcategoryEntity.setSubcategory(subcategory)

@@ -52,4 +52,23 @@ export const releaseHandler = {
       }
     ]
   },
+  updateRelease: {
+    handler: `${funcDir}/updateReleaseFunction.handler`,
+    events: [
+      {
+        http: {
+          method: 'put',
+          path: 'v1/lancamentos/{lancamentoId}',
+          cors: true,
+          request: {
+            parameters: {
+              paths: {
+                lancamentoId: true
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
 }

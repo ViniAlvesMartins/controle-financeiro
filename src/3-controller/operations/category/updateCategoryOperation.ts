@@ -44,12 +44,12 @@ export class UpdateCategoryOperation extends BaseOperation {
   }
 
   private async inputValidation(input: UpdateCategoryInput) {
-    if (!input.name){
-      await this.makeInputValidation(`O campo 'nome' é obrigatório`, 'nome')
-    }
-
     if (!input.categoryId){
       await this.makeInputValidation(`O campo 'categoriaId' tem que ser do tipo númerico`, 'categoriaId')
+    }
+
+    if (input.categoryId > 0){
+      await this.makeInputValidation(`O campo 'categoriaId' não pode ser 0`, 'categoriaId')
     }
   }
 }

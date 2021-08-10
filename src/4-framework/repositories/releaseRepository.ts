@@ -102,15 +102,33 @@ export class ReleaseRepository implements IReleaseRepository {
 
     const release = await this._releaseRepository.findAll(condition)
 
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: getById ${JSON.stringify(release)}`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: getAll ${JSON.stringify(release)}`)
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing create execution`)
 
     return release
 
   }
 
-  update(input: IRelease): Promise<IRelease> {
-    throw new Error('Method not implemented.')
+  async update(input: IRelease): Promise<IRelease> {
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: input ${JSON.stringify(input)}`)
+    
+    const release = await this._releaseRepository.update({
+      value: input.value,
+      date: new Date(input.date),
+      subcategoryId: input.subcategoryId,
+      comment: input.comment
+    }, {
+      returning: true,
+      where: {
+        releaseId: input.releaseId
+      }
+    })
+
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: update ${JSON.stringify(release)}`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing create execution`)
+
+    return input
   }
   delete(releaseId: number): Promise<boolean> {
     throw new Error('Method not implemented.')
