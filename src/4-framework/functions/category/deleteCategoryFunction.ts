@@ -1,6 +1,7 @@
 import 'reflect-metadata'
 import { APIGatewayProxyEvent, APIGatewayProxyHandler } from 'aws-lambda'
 import Container from 'typedi'
+import '@framework/repositories/releaseRepository'
 import '@framework/repositories/categoryRepository'
 import '@framework/modules/logger'
 import { DeleteCategoryOperation } from '@controller/operations/category/deleteCategoryOperation'

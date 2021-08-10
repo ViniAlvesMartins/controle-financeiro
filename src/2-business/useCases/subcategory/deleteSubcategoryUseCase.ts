@@ -1,4 +1,5 @@
 import ILogger, { LoggerToken } from '@business/modules/iLogger'
+import { IReleaseRepository, IReleaseRepositoryToken } from '@business/repositories/iReleaseRepository'
 import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '@business/repositories/iSubcategoryRepository'
 import { BaseUseCase } from '@business/utils/baseUseCase'
 import { SubcategoryEntity, ISubcategory } from '@domain/entities/subcategoryEntity'
@@ -16,6 +17,9 @@ export class DeleteSubcategoryUseCase extends BaseUseCase<ISubcategory> {
   @Inject(LoggerToken)
   private readonly _logger!: ILogger
   
+  @Inject(IReleaseRepositoryToken)
+  private readonly _releaseRepository!: IReleaseRepository
+
   private _subcategoryEntity!: SubcategoryEntity
 
   constructor (){
@@ -32,6 +36,17 @@ export class DeleteSubcategoryUseCase extends BaseUseCase<ISubcategory> {
       this._subcategoryEntity.setError({
         code: CodeErrors.EXISTING_VALUE,
         message: `Subcategoria com o subcategoria: ${subcategoryId} não existe`
+      } as baseErrorList)
+
+      return this._subcategoryEntity
+    }
+
+    const existingRelease = await this._releaseRepository.validateBySubcategoryId(subcategoryId)
+
+    if(existingRelease) {
+      this._subcategoryEntity.setError({
+        code: CodeErrors.NON_EXISTENT_VALUE,
+        message: `Existe lançamento para a subcategoriaId: ${subcategoryId}`
       } as baseErrorList)
 
       return this._subcategoryEntity

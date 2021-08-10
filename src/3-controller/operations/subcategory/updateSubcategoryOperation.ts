@@ -35,7 +35,7 @@ export class UpdateSubcategoryOperation extends BaseOperation {
 
     if (subcategory.hasError){
       if (subcategory.error.code === CodeErrors.NON_EXISTENT_VALUE){
-        return this.makeResponse(subcategory.error, statusCode.NOT_FOUND)
+        return this.makeResponse(subcategory.error, statusCode.BAD_REQUEST)
       }
 
       if (subcategory.error.code === CodeErrors.EXISTING_VALUE){
@@ -65,7 +65,7 @@ export class UpdateSubcategoryOperation extends BaseOperation {
       await this.makeInputValidation(`O campo 'categoriaId' tem que ser do tipo númerico`, 'categoriaId')
     }
 
-    if (input.categoryId > 0){
+    if (input.categoryId <= 0){
       await this.makeInputValidation(`O campo 'categoriaId' não pode ser 0`, 'categoriaId')
     }
 
@@ -73,7 +73,7 @@ export class UpdateSubcategoryOperation extends BaseOperation {
       await this.makeInputValidation(`O campo 'subcategoriaId' tem que ser do tipo númerico`, 'subcategoriaId')
     }
 
-    if (input.subcategoryId > 0){
+    if (input.subcategoryId <= 0){
       await this.makeInputValidation(`O campo 'subcategoryId' não pode ser 0`, 'subcategoryId')
     }
   }

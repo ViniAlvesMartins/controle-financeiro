@@ -42,7 +42,7 @@ export class GetAllSubcategoryOperation extends BaseOperation {
       this._logger.info(`class: ${GetAllSubcategoryOperation.name} | method: exec | message: finishing operation execution`)
       return this.makeResponse(output, statusCode.SUCCESS)
     }
-    return this.makeResponse([], statusCode.NOT_FOUND)    
+    return this.makeResponse([], statusCode.BAD_REQUEST)    
   }
 
 }

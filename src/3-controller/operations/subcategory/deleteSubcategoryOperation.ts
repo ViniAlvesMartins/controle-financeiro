@@ -32,7 +32,7 @@ export class DeleteSubcategoryOperation extends BaseOperation {
     const category = await this._DeleteSubcategoryUseCase.exec(input.subcategoryId)
     
     if (typeof category != 'boolean'){
-      return this.makeResponse(category.error, statusCode.NOT_FOUND)
+      return this.makeResponse(category.error, statusCode.BAD_REQUEST)
     }
 
     const response = {
@@ -45,6 +45,10 @@ export class DeleteSubcategoryOperation extends BaseOperation {
   private async inputValidation(input: DeleteSubcategoryInput) {
     if (!input.subcategoryId){
       await this.makeInputValidation(`O campo 'subcategoriaId' tem que ser do tipo númerico`, 'subcategoriaId')
+    }
+
+    if (input.subcategoryId <= 0){
+      await this.makeInputValidation(`O campo 'subcategoryId' não pode ser 0`, 'subcategoryId')
     }
   }
 }

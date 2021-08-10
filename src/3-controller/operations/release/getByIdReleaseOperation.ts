@@ -53,12 +53,16 @@ export class GetByIdReleaseOperation extends BaseOperation {
     }
   
 
-    return this.makeResponse({}, statusCode.NOT_FOUND)    
+    return this.makeResponse({}, statusCode.BAD_REQUEST)    
   }
 
   private async inputValidation(input: GetByIdReleaseInput) {
     if (!input.releaseId){
       await this.makeInputValidation(`O campo 'releaseId' tem que ser do tipo númerico`, 'releaseId')
+    }
+
+    if (input.releaseId <= 0){
+      await this.makeInputValidation(`O campo 'releaseId' não pode ser 0`, 'releaseId')
     }
   }
 }

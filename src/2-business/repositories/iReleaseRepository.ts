@@ -11,4 +11,6 @@ export interface IReleaseRepository {
   getAll (filters: GetAllFiltersDto): Promise<IRelease[]>
   update (input: IRelease): Promise<IRelease | null>
   delete (releaseId: number): Promise<boolean>
+  validateBySubcategoryId (subcategoryId: number): Promise<boolean>
+  validateByCategoryId (subcategoryId: number): Promise<boolean>
 }

@@ -71,4 +71,23 @@ export const releaseHandler = {
       }
     ]
   },
+  deleteRelease: {
+    handler: `${funcDir}/deleteReleaseFunction.handler`,
+    events: [
+      {
+        http: {
+          method: 'delete',
+          path: 'v1/lancamentos/{lancamentoId}',
+          cors: true,
+          request: {
+            parameters: {
+              paths : {
+                lancamentoId: true
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
 }

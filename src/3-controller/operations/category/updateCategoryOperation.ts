@@ -48,7 +48,7 @@ export class UpdateCategoryOperation extends BaseOperation {
       await this.makeInputValidation(`O campo 'categoriaId' tem que ser do tipo númerico`, 'categoriaId')
     }
 
-    if (input.categoryId > 0){
+    if (input.categoryId <= 0){
       await this.makeInputValidation(`O campo 'categoriaId' não pode ser 0`, 'categoriaId')
     }
   }

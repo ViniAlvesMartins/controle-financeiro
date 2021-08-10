@@ -62,7 +62,7 @@ export class GetAllReleaseOperation extends BaseOperation {
       return this.makeResponse(output, statusCode.SUCCESS)  
     }
 
-    return this.makeResponse([], statusCode.NOT_FOUND)    
+    return this.makeResponse([], statusCode.BAD_REQUEST)    
   }
 
   private async inputValidation(input: GetAllReleaseInput) {

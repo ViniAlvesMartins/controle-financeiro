@@ -40,7 +40,7 @@ export class UpdateReleaseOperation extends BaseOperation {
 
     if (release.hasError){
       if (release.error.code === CodeErrors.NON_EXISTENT_VALUE){
-        return this.makeResponse(release.error, statusCode.NOT_FOUND)
+        return this.makeResponse(release.error, statusCode.BAD_REQUEST)
       }
     }
     const response = {
@@ -72,7 +72,7 @@ export class UpdateReleaseOperation extends BaseOperation {
       await this.makeInputValidation(`O campo 'data' é inválido`, 'data')
     }
 
-    if (input.subcategoryId && input.subcategoryId > 0){
+    if (input.subcategoryId && input.subcategoryId <= 0){
       await this.makeInputValidation(`O campo 'subcategoriaId' não pode ser 0`, 'subcategoriaId')
     }
   }

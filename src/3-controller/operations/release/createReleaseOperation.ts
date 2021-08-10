@@ -41,7 +41,7 @@ export class CreateReleaseOperation extends BaseOperation {
 
     if (release.hasError){
       if (release.error.code === CodeErrors.NON_EXISTENT_VALUE){
-        return this.makeResponse(release.error, statusCode.NOT_FOUND)
+        return this.makeResponse(release.error, statusCode.BAD_REQUEST)
       }
     }
     const response = {

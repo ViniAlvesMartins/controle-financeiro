@@ -5,7 +5,6 @@ import { IRelease } from '@domain/entities/ReleaseEntity'
 import { CategoryModel } from '@framework/models/categoryModel'
 import { ReleaseModel, ReleaseModelToken } from '@framework/models/ReleaseModel'
 import { SubcategoryModel } from '@framework/models/subcategoryModel'
-import { toDate} from 'date-fns-tz'
 import isValid from 'date-fns/isValid'
 import { Op } from 'sequelize'
 import { Inject, Service } from 'typedi'
@@ -130,7 +129,56 @@ export class ReleaseRepository implements IReleaseRepository {
 
     return input
   }
-  delete(releaseId: number): Promise<boolean> {
-    throw new Error('Method not implemented.')
+
+  async delete(releaseId: number): Promise<boolean> {
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: releaseId ${releaseId}`)
+
+    const release = await this._releaseRepository.destroy({
+      where: {
+        releaseId
+      }
+    })
+
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: delete ${JSON.stringify(release)}`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing create execution`)
+
+    return release > 0
   }
+
+  async validateBySubcategoryId(subcategoryId: number): Promise<boolean> {
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: subcategoryId ${subcategoryId}`)
+
+    const release = await this._releaseRepository.findAndCountAll({
+      where: {
+        subcategoryId
+      }
+    })
+
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: validateBySubcategoryId ${JSON.stringify(release)}`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing create execution`)
+
+    return release.count > 0
+  }
+
+  async validateByCategoryId(categoryId: number): Promise<boolean> {
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: categoryId ${categoryId}`)
+
+    const release = await this._releaseRepository.findAndCountAll({
+      include: {
+        model: SubcategoryModel,
+        where: {
+          categoryId
+        }
+      }
+    })
+
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: validateByCategoryId ${JSON.stringify(release)}`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing create execution`)
+
+    return release.count > 0
+  }
+
 }

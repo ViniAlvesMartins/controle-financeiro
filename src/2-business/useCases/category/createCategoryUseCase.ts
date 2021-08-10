@@ -16,19 +16,25 @@ export class CreateCategoryUseCase extends BaseUseCase<ICategory> {
   @Inject(LoggerToken)
   private readonly _logger!: ILogger
   
+  private _categoryEntity!: CategoryEntity
+
+  constructor() {
+    super()
+    this._categoryEntity = new CategoryEntity()
+  }
+
   async exec (name: string): Promise<CategoryEntity> {
     this._logger.info(`class: ${CreateCategoryUseCase.name} | method: exec | message: starting useCase execution`)
 
     const existingCategory = await this._categoryRepository.getByName(name)
 
-    const categoryEntity = new CategoryEntity()
     if(existingCategory) {
-      categoryEntity.setError({
+      this._categoryEntity.setError({
         code: CodeErrors.EXISTING_VALUE,
         message: `Categoria ${name} já existe`
       } as baseErrorList)
 
-      return categoryEntity
+      return this._categoryEntity
     }
 
     const category = await this._categoryRepository.create({
@@ -36,8 +42,8 @@ export class CreateCategoryUseCase extends BaseUseCase<ICategory> {
     } as ICategory)
 
     this._logger.info(`class: ${CreateCategoryUseCase.name} | method: exec | message: finishing useCase execution`)
-    categoryEntity.setCategory(category)
-    return categoryEntity
+    this._categoryEntity.setCategory(category)
+    return this._categoryEntity
   }
   
 }

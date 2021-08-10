@@ -44,12 +44,16 @@ export class GetByIdSubcategoryOperation extends BaseOperation {
       this._logger.info(`class: ${GetByIdSubcategoryOperation.name} | method: exec | message: finishing operation execution`)
       return this.makeResponse(response, statusCode.SUCCESS)
     }
-    return this.makeResponse({}, statusCode.NOT_FOUND)    
+    return this.makeResponse({}, statusCode.BAD_REQUEST)    
   }
 
   private async inputValidation(input: GetByIdSubcategoryInput) {
     if (!input.subcategoryId){
       await this.makeInputValidation(`O campo 'subcategoriaId' tem que ser do tipo númerico`, 'subcategoriaId')
+    }
+
+    if (input.subcategoryId <= 0){
+      await this.makeInputValidation(`O campo 'subcategoriaId' não pode ser 0`, 'subcategoriaId')
     }
   }
 }

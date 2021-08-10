@@ -20,30 +20,36 @@ export class CreateSubcategoryUseCase extends BaseUseCase<ISubcategory> {
   @Inject(LoggerToken)
   private readonly _logger!: ILogger
   
+  private _subcategoryEntity!: SubcategoryEntity
+
+  constructor(){
+    super()
+    this._subcategoryEntity = new SubcategoryEntity()
+  }
+
   async exec (categoryId: number, name: string): Promise<SubcategoryEntity> {
     this._logger.info(`class: ${CreateSubcategoryUseCase.name} | method: exec | message: starting useCase execution`)
 
     const existingCategory = await this._categoryRepository.getById(categoryId)
 
-    const subcategoryEntity = new SubcategoryEntity()
     if(!existingCategory) {
-      subcategoryEntity.setError({
+      this._subcategoryEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,
         message: `Categoria com categoriaId: ${categoryId} não existe`
       } as baseErrorList)
 
-      return subcategoryEntity
+      return this._subcategoryEntity
     }
 
     const existingSubcategory = await this._subcategoryRepository.getByName(name, categoryId)
 
     if(existingSubcategory) {
-      subcategoryEntity.setError({
+      this._subcategoryEntity.setError({
         code: CodeErrors.EXISTING_VALUE,
         message: `Subcategoria ${name} já existe para a categoria ${existingCategory.name}`
       } as baseErrorList)
 
-      return subcategoryEntity
+      return this._subcategoryEntity
     }
 
     const subcategory = await this._subcategoryRepository.create({
@@ -51,14 +57,14 @@ export class CreateSubcategoryUseCase extends BaseUseCase<ISubcategory> {
       categoryId
     } as ISubcategory)
 
-    subcategoryEntity.setSubcategory(subcategory)
+    this._subcategoryEntity.setSubcategory(subcategory)
     this._logger.info(`class: ${CreateSubcategoryUseCase.name} | method: exec | message: existingCategory ${JSON.stringify(existingCategory)}`)
-    subcategoryEntity.setCategory({
+    this._subcategoryEntity.setCategory({
       categoryId: existingCategory.categoryId,
       name: existingCategory.name
     })
     this._logger.info(`class: ${CreateSubcategoryUseCase.name} | method: exec | message: finishing useCase execution`)
-    return subcategoryEntity
+    return this._subcategoryEntity
   }
   
 }
