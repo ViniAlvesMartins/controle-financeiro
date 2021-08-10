@@ -33,9 +33,10 @@ export class DeleteCategoryUseCase extends BaseUseCase<ICategory> {
     const existingCategory = await this._categoryRepository.getById(categoryId)
 
     if(!existingCategory) {
+      this._logger.error(`class: ${DeleteCategoryUseCase.name} | method: exec | message: non-existent category ${categoryId} `)
       this._categoryEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,
-        message: `Categoria com categoriaId: ${categoryId} não existe`
+        message: `Categoria com categoriyId: ${categoryId} não existe`
       } as baseErrorList)
 
       return this._categoryEntity
@@ -46,7 +47,7 @@ export class DeleteCategoryUseCase extends BaseUseCase<ICategory> {
     if(existingRelease) {
       this._categoryEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,
-        message: `Existe lançamento para a categoriaId: ${categoryId}`
+        message: `Existe lançamento para a categoriyId: ${categoryId}`
       } as baseErrorList)
 
       return this._categoryEntity

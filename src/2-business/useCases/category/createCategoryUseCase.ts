@@ -29,6 +29,7 @@ export class CreateCategoryUseCase extends BaseUseCase<ICategory> {
     const existingCategory = await this._categoryRepository.getByName(name)
 
     if(existingCategory) {
+      this._logger.error(`class: ${CreateCategoryUseCase.name} | method: exec | message: existing category ${name} `)
       this._categoryEntity.setError({
         code: CodeErrors.EXISTING_VALUE,
         message: `Categoria ${name} já existe`
