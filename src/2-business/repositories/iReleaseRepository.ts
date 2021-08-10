@@ -1,3 +1,4 @@
+import { BalanceDto } from '@business/dto/balance/balanceDto'
 import { CreateReleaseDto } from '@business/dto/release/createReleaseDto'
 import { GetAllFiltersDto } from '@business/dto/release/getAllFiltersDto'
 import { IRelease } from '@domain/entities/releaseEntity'
@@ -13,4 +14,5 @@ export interface IReleaseRepository {
   delete (releaseId: number): Promise<boolean>
   validateBySubcategoryId (subcategoryId: number): Promise<boolean>
   validateByCategoryId (subcategoryId: number): Promise<boolean>
+  balance (filters: BalanceDto): Promise<IRelease[]>
 }

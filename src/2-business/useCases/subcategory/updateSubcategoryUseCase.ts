@@ -38,7 +38,6 @@ export class UpdateSubcategoryUseCase extends BaseUseCase<ISubcategory> {
     this._logger.info(`class: ${UpdateSubcategoryUseCase.name} | method: exec | message: input ${JSON.stringify(input)}`)
 
     const existingSubcategory = await this._subcategoryRepository.getById(input.subcategoryId)
-
     if(!existingSubcategory) {
       this._subcategoryEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,

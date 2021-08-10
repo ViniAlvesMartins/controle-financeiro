@@ -2,11 +2,11 @@ import { BaseEntity } from '@domain/utils/baseEntity'
 import { ICategory } from './categoryEntity'
 
 export interface ISubcategory {
-  subcategoryId: number,
-  name: string,
-  categoryId: number,
+  subcategoryId: number
+  name: string
+  categoryId: number
   Category: ICategory
-  createdAt?: Date,
+  createdAt?: Date
   updatedAt?: Date
 }
 

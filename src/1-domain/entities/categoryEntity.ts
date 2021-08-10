@@ -1,8 +1,8 @@
 import { BaseEntity } from '@domain/utils/baseEntity'
 export interface ICategory {
-  categoryId: number,
-  name: string,
-  createdAt?: Date,
+  categoryId: number
+  name: string
+  createdAt?: Date
   updatedAt?: Date
 }
 

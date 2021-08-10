@@ -4,8 +4,7 @@ import { GetAllReleaseInput } from '@controller/serializers/input/Release/getAll
 import { GetAllCategoryOutput, GetAllReleaseOutput, GetAllSubcategoryOutput } from '@controller/serializers/output/release/getAllReleaseOutput'
 
 import { BaseOperation, response, statusCode } from '@controller/utils/baseOperation'
-import { compareAsc, isDate, isValid, startOfDay } from 'date-fns'
-import { release } from 'process'
+import { compareAsc, isValid, startOfDay } from 'date-fns'
 import { Inject, Service } from 'typedi'
 
 @Service({ transient: false })
@@ -66,8 +65,6 @@ export class GetAllReleaseOperation extends BaseOperation {
   }
 
   private async inputValidation(input: GetAllReleaseInput) {
-
-    console.log(`isDate ${isDate(input.startDate)}`)
     if (input.startDate && !isValid(new Date(input.startDate))){
       await this.makeInputValidation(`O campo 'data_inicio' é inválido`, 'data_inicio')
     }
@@ -82,6 +79,10 @@ export class GetAllReleaseOperation extends BaseOperation {
 
     if (input.subcategoryId && !Number(input.subcategoryId)){
       await this.makeInputValidation(`O campo 'subcategoriaId' tem que ser do tipo númerico`, 'subcategoriaId')
+    }
+
+    if (input.subcategoryId && input.subcategoryId <= 0){
+      await this.makeInputValidation(`O campo 'subcategoryId' não pode ser 0`, 'subcategoryId')
     }
   }
 }

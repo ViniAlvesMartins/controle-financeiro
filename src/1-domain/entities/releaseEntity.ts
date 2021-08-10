@@ -2,13 +2,13 @@ import { BaseEntity } from '@domain/utils/baseEntity'
 import { ISubcategory } from './subcategoryEntity'
 
 export interface IRelease {
-  releaseId: number,
-  value: number,
-  date: Date,
-  subcategoryId: number,
-  Subcategory: ISubcategory,
-  comment: string,
-  createdAt?: Date,
+  releaseId: number
+  value: number
+  date: Date
+  subcategoryId: number
+  Subcategory: ISubcategory
+  comment: string
+  createdAt?: Date
   updatedAt?: Date
 }
 

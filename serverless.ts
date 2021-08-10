@@ -3,7 +3,7 @@ import type { AWS } from '@serverless/typescript'
 import { categoryHandler } from '@framework/functions/category/_handler'
 import { subcategoryHandler } from '@framework/functions/subcategory/_handler'
 import { releaseHandler } from '@framework/functions/release/_handler'
-
+import { balanceHandler } from '@framework/functions/balance/_handler'
 
 const serverlessConfiguration: AWS = {
   service: 'controle-financeiro',
@@ -35,7 +35,8 @@ const serverlessConfiguration: AWS = {
   functions: { 
     ...categoryHandler,
     ...subcategoryHandler,
-    ...releaseHandler
+    ...releaseHandler,
+    ...balanceHandler
   },
 }
 

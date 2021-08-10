@@ -84,7 +84,7 @@ export class CreateReleaseOperation extends BaseOperation {
       await this.makeInputValidation(`O campo 'subcategoriaId' tem que ser do tipo númerico`, 'subcategoriaId')
     }
 
-    if (input.subcategoryId && input.subcategoryId > 0){
+    if (input.subcategoryId && input.subcategoryId <= 0){
       await this.makeInputValidation(`O campo 'subcategoriaId' não pode ser 0`, 'subcategoriaId')
     }
   }

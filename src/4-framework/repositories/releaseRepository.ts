@@ -1,3 +1,4 @@
+import { BalanceDto } from '@business/dto/balance/balanceDto'
 import { GetAllFiltersDto } from '@business/dto/release/getAllFiltersDto'
 import ILogger, { LoggerToken } from '@business/modules/iLogger'
 import { IReleaseRepository, IReleaseRepositoryToken } from '@business/repositories/iReleaseRepository'
@@ -37,7 +38,7 @@ export class ReleaseRepository implements IReleaseRepository {
   }
 
   async getById(releaseId: number): Promise<IRelease> {
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting getById execution`)
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: releaseId ${releaseId}`)
 
     const release = await this._releaseRepository.findByPk(releaseId, {
@@ -45,13 +46,13 @@ export class ReleaseRepository implements IReleaseRepository {
     })
 
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: getById ${JSON.stringify(release)}`)
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing getById execution`)
 
     return release
   }
 
   async getAll(filters: GetAllFiltersDto): Promise<IRelease[]> {
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting getAll execution`)
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: filters ${JSON.stringify(filters)}`)
 
     const condition = {
@@ -64,9 +65,6 @@ export class ReleaseRepository implements IReleaseRepository {
       ],
       where : {}
     }
-
-    console.log(`.:: ${isValid(filters.startDate)} ::.`)
-    console.log(`.:: ${isValid(filters.endDate)} ::.`)
 
     if (filters.startDate && filters.endDate && isValid(filters.startDate) && isValid(filters.endDate)){
       condition.where = {
@@ -102,14 +100,13 @@ export class ReleaseRepository implements IReleaseRepository {
     const release = await this._releaseRepository.findAll(condition)
 
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: getAll ${JSON.stringify(release)}`)
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing getAll execution`)
 
     return release
-
   }
 
   async update(input: IRelease): Promise<IRelease> {
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting update execution`)
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: input ${JSON.stringify(input)}`)
     
     const release = await this._releaseRepository.update({
@@ -125,13 +122,13 @@ export class ReleaseRepository implements IReleaseRepository {
     })
 
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: update ${JSON.stringify(release)}`)
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing update execution`)
 
     return input
   }
 
   async delete(releaseId: number): Promise<boolean> {
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting delete execution`)
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: releaseId ${releaseId}`)
 
     const release = await this._releaseRepository.destroy({
@@ -141,13 +138,13 @@ export class ReleaseRepository implements IReleaseRepository {
     })
 
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: delete ${JSON.stringify(release)}`)
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing delete execution`)
 
     return release > 0
   }
 
   async validateBySubcategoryId(subcategoryId: number): Promise<boolean> {
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting validateBySubcategoryId execution`)
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: subcategoryId ${subcategoryId}`)
 
     const release = await this._releaseRepository.findAndCountAll({
@@ -157,13 +154,13 @@ export class ReleaseRepository implements IReleaseRepository {
     })
 
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: validateBySubcategoryId ${JSON.stringify(release)}`)
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing validateBySubcategoryId execution`)
 
     return release.count > 0
   }
 
   async validateByCategoryId(categoryId: number): Promise<boolean> {
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting validateByCategoryId execution`)
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: categoryId ${categoryId}`)
 
     const release = await this._releaseRepository.findAndCountAll({
@@ -176,9 +173,48 @@ export class ReleaseRepository implements IReleaseRepository {
     })
 
     this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: validateByCategoryId ${JSON.stringify(release)}`)
-    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing create execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing validateByCategoryId execution`)
 
     return release.count > 0
+  }
+
+  async balance(filters: BalanceDto): Promise<IRelease[]> {
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: starting balance execution`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: filters ${JSON.stringify(filters)}`)
+
+    const condition = {
+      include: [
+        { model: SubcategoryModel,
+          include: [{
+            model: CategoryModel
+          }]
+        }
+      ],
+      where : {}
+    }
+
+    if (filters.startDate && filters.endDate && isValid(filters.startDate) && isValid(filters.endDate)){
+      condition.where = {
+        date: {
+          [Op.between]: [filters.startDate, filters.endDate]
+        }
+      }
+    }
+
+    if (filters.categoryId){
+      Object.assign(condition.include[0], {
+        where: {
+          categoryId: filters.categoryId
+        }
+      })
+    }
+
+    const release = await this._releaseRepository.findAll(condition)
+
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: balance ${JSON.stringify(release)}`)
+    this._logger.info(`class: ${ReleaseRepository.name} | method: exec | message: finishing balance execution`)
+
+    return release
   }
 
 }

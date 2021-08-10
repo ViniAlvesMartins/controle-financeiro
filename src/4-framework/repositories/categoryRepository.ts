@@ -39,7 +39,7 @@ export class CategoryRepository implements ICategoryRepository {
     return category
   }
 
-  async getAll(name: string): Promise<ICategory[]> {
+  async getAll(name?: string): Promise<ICategory[]> {
     this._logger.info(`class: ${CategoryRepository.name} | method: exec | message: starting getAll execution`)
     let condition
 
