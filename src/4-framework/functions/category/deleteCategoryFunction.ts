@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { APIGatewayProxyEvent, APIGatewayProxyHandler, Context } from 'aws-lambda'
+import { APIGatewayProxyEvent, APIGatewayProxyHandler } from 'aws-lambda'
 import Container from 'typedi'
 import '@framework/repositories/categoryRepository'
 import '@framework/modules/logger'
@@ -9,7 +9,7 @@ import db from '@framework/utils/domainDb'
 import { LoggerToken } from '@business/modules/iLogger'
 import { DeleteCategoryInput } from '@controller/serializers/input/category/deleteCategoryInput'
 
-export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent, _context: Context) => {
+export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) => {
   const logger = Container.get(LoggerToken)
   logger.info(`handler | starting handler execution`)
   await db()

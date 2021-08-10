@@ -10,7 +10,7 @@ import { UpdateCategoryInput } from '@controller/serializers/input/category/upda
 import { UpdateCategoryOperation } from '@controller/operations/category/updateCategoryOperation'
 
 
-export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent, _context) => {
+export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) => {
   const logger = Container.get(LoggerToken)
   logger.info(`handler | starting handler execution`)
   await db()

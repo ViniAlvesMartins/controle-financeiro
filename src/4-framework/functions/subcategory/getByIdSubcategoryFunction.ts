@@ -10,7 +10,7 @@ import { LoggerToken } from '@business/modules/iLogger'
 import { GetByIdSubcategoryOperation } from '@controller/operations/subcategory/getByIdSubcategoryOperation'
 import { GetByIdSubcategoryInput } from '@controller/serializers/input/subcategory/getByIdSubcategoryInput'
 
-export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent, _context) => {
+export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) => {
   const logger = Container.get(LoggerToken)
   logger.info(`handler | starting handler execution`)
   await db()

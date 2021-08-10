@@ -31,4 +31,25 @@ export const releaseHandler = {
       }
     ]
   },
+  getAllRelease: {
+    handler: `${funcDir}/getAllReleaseFunction.handler`,
+    events: [
+      {
+        http: {
+          method: 'get',
+          path: 'v1/lancamentos',
+          cors: true,
+          request: {
+            parameters: {
+              querystrings : {
+                nome: false,
+                dataInicio:false,
+                dataFim: false
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
 }

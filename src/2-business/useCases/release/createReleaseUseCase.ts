@@ -46,7 +46,6 @@ export class CreateReleaseUseCase extends BaseUseCase<IRelease> {
     const release = await this._releaseRepository.create(input)
 
     this._releaseEntity.setRelease(release)
-    console.log(`aqui ${JSON.stringify(this._releaseEntity)}`)
     this._releaseEntity.setSubcategory(existingSubcategory)
     this._logger.info(`class: ${CreateReleaseUseCase.name} | method: exec | message: finishing useCase execution`)
     return this._releaseEntity

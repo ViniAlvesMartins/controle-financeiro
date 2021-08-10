@@ -11,7 +11,7 @@ import { GetByIdReleaseInput } from '@controller/serializers/input/release/getBy
 import { GetByIdReleaseOperation } from '@controller/operations/release/getByIdReleaseOperation'
 
 
-export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent, _context) => {
+export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) => {
   const logger = Container.get(LoggerToken)
   logger.info(`handler | starting handler execution`)
   await db()

@@ -4,7 +4,7 @@ import { CreateReleaseInput } from '@controller/serializers/input/release/create
 import { BaseOperation, response, statusCode } from '@controller/utils/baseOperation'
 import { CodeErrors } from '@domain/utils/baseErrorList'
 import { Inject, Service } from 'typedi'
-import { isDate, format, startOfDay, isValid} from 'date-fns'
+import { format, startOfDay, isValid} from 'date-fns'
 import { toDate} from 'date-fns-tz'
 import { CreateCategoryOutput, CreateReleaseOutput, CreateSubcategoryOutput } from '@controller/serializers/output/release/createReleaseOutput'
  
@@ -76,7 +76,6 @@ export class CreateReleaseOperation extends BaseOperation {
       input.date = format(startOfDay(toDate(new Date(), { timeZone: 'America/Sao_Paulo' })),'yyyy/MM/dd')
     }
 
-    console.log(`isDate ${isDate(input.date)}`)
     if (input.date && !isValid(new Date(input.date))){
       await this.makeInputValidation(`O campo 'data' é inválido`, 'data')
     }
