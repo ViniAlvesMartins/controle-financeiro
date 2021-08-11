@@ -1,4 +1,4 @@
-import { BaseEntity } from '@domain/utils/baseEntity'
+import { BaseEntity } from '../utils/baseEntity'
 import { ICategory } from './categoryEntity'
 
 export interface ISubcategory {
@@ -20,13 +20,13 @@ export class SubcategoryEntity extends BaseEntity implements ISubcategory {
 
   Category!: ICategory
 
-  setSubcategory(subcategory: ISubcategory) {
+  setSubcategory(subcategory: ISubcategory): void {
     this.subcategoryId = subcategory.subcategoryId
     this.categoryId = subcategory.categoryId
     this.name = subcategory.name
   } 
 
-  setCategory(category: ICategory) {
+  setCategory(category: ICategory): void {
     this.Category = category
   }
 }

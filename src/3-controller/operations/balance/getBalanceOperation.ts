@@ -1,12 +1,12 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { GetBalanceUseCase, GetBalanceUseCaseToken } from '@business/useCases/balance/getBalanceUseCase'
-import { GetBalanceInput } from '@controller/serializers/input/balance/getBalanceInput'
-import { GetBalanceOutput } from '@controller/serializers/output/balance/getBalanceOutput'
-import { BaseOperation, response, statusCode } from '@controller/utils/baseOperation'
+import ILogger, { LoggerToken } from '../../../2-business/modules/iLogger'
+import { GetBalanceUseCase, GetBalanceUseCaseToken } from '../../../2-business/useCases/balance/getBalanceUseCase'
+import { GetBalanceInput } from '../../serializers/input/balance/getBalanceInput'
+import { GetBalanceOutput } from '../../serializers/output/balance/getBalanceOutput'
+import { BaseOperation, response, statusCode } from '../../utils/baseOperation'
 import { compareAsc, isValid } from 'date-fns'
 import { Inject, Service } from 'typedi'
-import { ReleaseEntity } from '@domain/entities/releaseEntity'
-import { CodeErrors } from '@domain/utils/baseErrorList'
+import { ReleaseEntity } from '../../../1-domain/entities/releaseEntity'
+import { CodeErrors } from '../../../1-domain/utils/baseErrorList'
 
 @Service({ transient: false })
 export class GetBalanceOperation extends BaseOperation {
@@ -38,7 +38,7 @@ export class GetBalanceOperation extends BaseOperation {
       if (balances.hasError && balances.error.code === CodeErrors.NON_EXISTENT_VALUE){
         return this.makeResponse(balances.error, statusCode.BAD_REQUEST)
       }
-    }else {
+    }else if(balances.length > 0){
       const balancesOutput: GetBalanceOutput[] = []
 
       for (const balance of balances) {
@@ -47,27 +47,28 @@ export class GetBalanceOperation extends BaseOperation {
 
       return this.makeResponse(balancesOutput, statusCode.SUCCESS)
     }
+    return this.makeResponse([], statusCode.NOT_FOUND)
   }
 
   private async inputValidation(input: GetBalanceInput) {
     if (!input.startDate){
-      await this.makeInputValidation(`O campo 'data_inicio' é obrigatório`, 'data_inicio')
+      await this.makeInputValidation(`O campo 'startDate' é obrigatório`, 'startDate')
     }
 
     if (input.startDate && !isValid(new Date(input.startDate))){
-      await this.makeInputValidation(`O campo 'data_inicio' é inválido`, 'data_inicio')
+      await this.makeInputValidation(`O campo 'startDate' é inválido`, 'startDate')
     }
 
     if (!input.endDate){
-      await this.makeInputValidation(`O campo 'data_fim' é inválido`, 'data_fim')
+      await this.makeInputValidation(`O campo 'endDate' é inválido`, 'endDate')
     }
 
     if (input.endDate && !isValid(new Date(input.endDate))){
-      await this.makeInputValidation(`O campo 'data_fim' é inválido`, 'data_fim')
+      await this.makeInputValidation(`O campo 'endDate' é inválido`, 'endDate')
     }
 
     if(input.startDate && input.endDate && compareAsc(new Date(input.startDate), new Date(input.endDate)) === 1) {
-      await this.makeInputValidation(`A 'data_inicio' deve ser menor que a 'data_fim'`, 'data_fim')
+      await this.makeInputValidation(`A 'startDate' deve ser menor que a 'endDate'`, 'endDate')
     }
 
     if (input.categoryId && !Number(input.categoryId)){

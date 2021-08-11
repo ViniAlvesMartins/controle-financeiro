@@ -1,9 +1,9 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { ICategoryRepository, ICategoryRepositoryToken } from '@business/repositories/iCategoryRepository'
-import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '@business/repositories/iSubcategoryRepository'
-import { BaseUseCase } from '@business/utils/baseUseCase'
-import { SubcategoryEntity, ISubcategory } from '@domain/entities/subcategoryEntity'
-import { baseErrorList, CodeErrors } from '@domain/utils/baseErrorList'
+import ILogger, { LoggerToken } from '../../modules/iLogger'
+import { ICategoryRepository, ICategoryRepositoryToken } from '../../repositories/iCategoryRepository'
+import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '../../repositories/iSubcategoryRepository'
+import { BaseUseCase } from '../../utils/baseUseCase'
+import { SubcategoryEntity, ISubcategory } from '../../../1-domain/entities/subcategoryEntity'
+import { baseErrorList, CodeErrors } from '../../../1-domain/utils/baseErrorList'
 import { Inject, Service } from 'typedi'
 
 export const CreateSubcategoryUseCaseToken = 'CreateSubcategoryUseCase'
@@ -45,7 +45,7 @@ export class CreateSubcategoryUseCase extends BaseUseCase<ISubcategory> {
     const existingSubcategory = await this._subcategoryRepository.getByName(name, categoryId)
 
     if(existingSubcategory) {
-      this._logger.error(`class: ${CreateSubcategoryUseCase.name} | method: exec | message: existenting subcategory ${existingSubcategory.subcategoryId} `)
+      this._logger.error(`class: ${CreateSubcategoryUseCase.name} | method: exec | message: existing subcategory ${existingSubcategory.subcategoryId} `)
       this._subcategoryEntity.setError({
         code: CodeErrors.EXISTING_VALUE,
         message: `Subcategoria ${name} já existe para a categoria ${existingCategory.name}`

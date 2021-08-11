@@ -1,4 +1,4 @@
-import { baseErrorList } from '@domain/utils/baseErrorList'
+import { baseErrorList } from '../../1-domain/utils/baseErrorList'
 
 export interface BaseResponse<Tmodel> {
   hasError: boolean

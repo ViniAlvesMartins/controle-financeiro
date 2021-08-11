@@ -6,7 +6,7 @@ export const subcategoryHandler = {
       {
         http: {
           method: 'post',
-          path: 'v1/subcategorias',
+          path: 'v1/subcategories',
           cors: true
         }
       }
@@ -18,7 +18,7 @@ export const subcategoryHandler = {
       {
         http: {
           method: 'get',
-          path: 'v1/subcategorias',
+          path: 'v1/subcategories',
           cors: true,
           authorizer: {
             name: 'auth',
@@ -42,7 +42,7 @@ export const subcategoryHandler = {
       {
         http: {
           method: 'get',
-          path: 'v1/subcategorias/{subcategoryId}',
+          path: 'v1/subcategories/{subcategoryId}',
           cors: true,
           authorizer: {
             name: 'auth',
@@ -66,7 +66,7 @@ export const subcategoryHandler = {
       {
         http: {
           method: 'put',
-          path: 'v1/subcategorias/{subcategoryId}',
+          path: 'v1/subcategories/{subcategoryId}',
           cors: true,
           authorizer: {
             name: 'auth',
@@ -90,7 +90,7 @@ export const subcategoryHandler = {
       {
         http: {
           method: 'delete',
-          path: 'v1/subcategorias/{subcategoryId}',
+          path: 'v1/subcategories/{subcategoryId}',
           cors: true,
           authorizer: {
             name: 'auth',

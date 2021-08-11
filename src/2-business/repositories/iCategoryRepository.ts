@@ -1,4 +1,4 @@
-import { ICategory } from '@domain/entities/categoryEntity'
+import { ICategory } from '../../1-domain/entities/categoryEntity'
 import { Token } from 'typedi'
 
 export const ICategoryRepositoryToken = new Token<ICategoryRepository>()

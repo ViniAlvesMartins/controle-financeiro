@@ -1,7 +1,7 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '@business/repositories/iSubcategoryRepository'
-import { BaseUseCase } from '@business/utils/baseUseCase'
-import { ISubcategory } from '@domain/entities/subcategoryEntity'
+import ILogger, { LoggerToken } from '../../modules/iLogger'
+import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '../../repositories/iSubcategoryRepository'
+import { BaseUseCase } from '../../utils/baseUseCase'
+import { ISubcategory } from '../../../1-domain/entities/subcategoryEntity'
 import { Inject, Service } from 'typedi'
 
 export const GetByIdSubcategoryUseCaseToken = 'GetByIdSubcategoryUseCase'

@@ -1,12 +1,11 @@
-import { BalanceCategoryOutputDto, BalanceDto, BalanceOutputDto } from '@business/dto/balance/balanceDto'
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { ICategoryRepository, ICategoryRepositoryToken } from '@business/repositories/iCategoryRepository'
-import { IReleaseRepository, IReleaseRepositoryToken } from '@business/repositories/iReleaseRepository'
-import { BaseUseCase } from '@business/utils/baseUseCase'
-import { ICategory } from '@domain/entities/categoryEntity'
-import { IRelease, ReleaseEntity } from '@domain/entities/releaseEntity'
-import { baseErrorList, CodeErrors } from '@domain/utils/baseErrorList'
-import { release } from 'os'
+import { BalanceCategoryOutputDto, BalanceDto, BalanceOutputDto } from '../../dto/balance/balanceDto'
+import ILogger, { LoggerToken } from '../../modules/iLogger'
+import { ICategoryRepository, ICategoryRepositoryToken } from '../../repositories/iCategoryRepository'
+import { IReleaseRepository, IReleaseRepositoryToken } from '../../repositories/iReleaseRepository'
+import { BaseUseCase } from '../../utils/baseUseCase'
+import { ICategory } from '../../../1-domain/entities/categoryEntity'
+import { IRelease, ReleaseEntity } from '../../../1-domain/entities/releaseEntity'
+import { baseErrorList, CodeErrors } from '../../../1-domain/utils/baseErrorList'
 import { Inject, Service } from 'typedi'
 
 export const GetBalanceUseCaseToken = 'GetBalanceUseCase'
@@ -47,7 +46,7 @@ export class GetBalanceUseCase extends BaseUseCase<IRelease> {
       }
       const releases = await this._releaseRepository.balance(input)
 
-      this._logger.info(`class: ${GetBalanceUseCase.name} | method: exec | message: return useCase ${JSON.stringify(release)}`)
+      this._logger.info(`class: ${GetBalanceUseCase.name} | method: exec | message: return useCase ${JSON.stringify(releases)}`)
 
       this._logger.info(`class: ${GetBalanceUseCase.name} | method: exec | message: finishing useCase execution`)
 

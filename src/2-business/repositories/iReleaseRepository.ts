@@ -1,7 +1,7 @@
-import { BalanceDto } from '@business/dto/balance/balanceDto'
-import { CreateReleaseDto } from '@business/dto/release/createReleaseDto'
-import { GetAllFiltersDto } from '@business/dto/release/getAllFiltersDto'
-import { IRelease } from '@domain/entities/releaseEntity'
+import { BalanceDto } from '../dto/balance/balanceDto'
+import { CreateReleaseDto } from '../dto/release/createReleaseDto'
+import { GetAllFiltersDto } from '../dto/release/getAllFiltersDto'
+import { IRelease } from '../../1-domain/entities/releaseEntity'
 import { Token } from 'typedi'
 
 export const IReleaseRepositoryToken = new Token<IReleaseRepository>()

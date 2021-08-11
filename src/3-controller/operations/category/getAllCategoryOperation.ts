@@ -1,8 +1,8 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { GetAllCategoryUseCase, GetAllCategoryUseCaseToken } from '@business/useCases/category/getAllCategoryUseCase'
-import { GetAllCategoryInput } from '@controller/serializers/input/category/getAllCategoryInput'
-import { CategoryOutput } from '@controller/serializers/output/category/getAllCategoryOutput'
-import { BaseOperation, response, statusCode } from '@controller/utils/baseOperation'
+import ILogger, { LoggerToken } from '../../../2-business/modules/iLogger'
+import { GetAllCategoryUseCase, GetAllCategoryUseCaseToken } from '../../../2-business/useCases/category/getAllCategoryUseCase'
+import { GetAllCategoryInput } from '../../serializers/input/category/getAllCategoryInput'
+import { CategoryOutput } from '../../serializers/output/category/getAllCategoryOutput'
+import { BaseOperation, response, statusCode } from '../../utils/baseOperation'
 import { Inject, Service } from 'typedi'
 
 @Service({ transient: false })

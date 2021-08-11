@@ -1,4 +1,4 @@
-import { BaseEntity } from '@domain/utils/baseEntity'
+import { BaseEntity } from '../utils/baseEntity'
 export interface ICategory {
   categoryId: number
   name: string

@@ -1,4 +1,4 @@
-import { baseErrorList, CodeErrors } from '@domain/utils/baseErrorList'
+import { baseErrorList, CodeErrors } from '../../1-domain/utils/baseErrorList'
 
 export enum statusCode {
   SUCCESS = 200,

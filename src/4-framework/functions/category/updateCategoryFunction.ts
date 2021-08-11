@@ -1,13 +1,13 @@
 import 'reflect-metadata'
 import { APIGatewayProxyEvent, APIGatewayProxyHandler } from 'aws-lambda'
 import Container from 'typedi'
-import { LoggerToken } from '@business/modules/iLogger'
-import '@framework/repositories/categoryRepository'
-import '@framework/modules/logger'
-import db from '@framework/utils/domainDb'
-import { httpEventNormalizer } from '@framework/utils/httpNormalized'
-import { UpdateCategoryInput } from '@controller/serializers/input/category/updateCategoryInput'
-import { UpdateCategoryOperation } from '@controller/operations/category/updateCategoryOperation'
+import { LoggerToken } from '../../../2-business/modules/iLogger'
+import '../../repositories/categoryRepository'
+import '../../modules/logger'
+import db from '../../utils/domainDb'
+import { httpEventNormalizer } from '../../utils/httpNormalized'
+import { UpdateCategoryInput } from '../../../3-controller/serializers/input/category/updateCategoryInput'
+import { UpdateCategoryOperation } from '../../../3-controller/operations/category/updateCategoryOperation'
 
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) => {

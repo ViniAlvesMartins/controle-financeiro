@@ -1,9 +1,9 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { IReleaseRepository, IReleaseRepositoryToken } from '@business/repositories/iReleaseRepository'
-import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '@business/repositories/iSubcategoryRepository'
-import { BaseUseCase } from '@business/utils/baseUseCase'
-import { SubcategoryEntity, ISubcategory } from '@domain/entities/subcategoryEntity'
-import { baseErrorList, CodeErrors } from '@domain/utils/baseErrorList'
+import ILogger, { LoggerToken } from '../../modules/iLogger'
+import { IReleaseRepository, IReleaseRepositoryToken } from '../../repositories/iReleaseRepository'
+import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '../../repositories/iSubcategoryRepository'
+import { BaseUseCase } from '../../utils/baseUseCase'
+import { SubcategoryEntity, ISubcategory } from '../../../1-domain/entities/subcategoryEntity'
+import { baseErrorList, CodeErrors } from '../../../1-domain/utils/baseErrorList'
 import { Inject, Service } from 'typedi'
 
 export const DeleteSubcategoryUseCaseToken = 'DeleteSubcategoryUseCase'
@@ -33,6 +33,7 @@ export class DeleteSubcategoryUseCase extends BaseUseCase<ISubcategory> {
     const existingSubcategory = await this._subcategoryRepository.getById(subcategoryId)
 
     if(!existingSubcategory) {
+      this._logger.error(`class: ${DeleteSubcategoryUseCase.name} | method: exec | message: non-existent subcategory ${subcategoryId} `)
       this._subcategoryEntity.setError({
         code: CodeErrors.EXISTING_VALUE,
         message: `Subcategoria com o subcategoryId: ${subcategoryId} não existe`
@@ -44,6 +45,7 @@ export class DeleteSubcategoryUseCase extends BaseUseCase<ISubcategory> {
     const existingRelease = await this._releaseRepository.validateBySubcategoryId(subcategoryId)
 
     if(existingRelease) {
+      this._logger.error(`class: ${DeleteSubcategoryUseCase.name} | method: exec | message: existing release ${existingRelease} `)
       this._subcategoryEntity.setError({
         code: CodeErrors.NON_EXISTENT_VALUE,
         message: `Existe lançamento para a subcategoryId: ${subcategoryId}`

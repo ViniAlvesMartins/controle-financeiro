@@ -4,8 +4,9 @@
   "description": "Serverless aws-nodejs-typescript template",
   "main": "serverless.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "serverless offline -s dev"
+    "start": "serverless offline -s dev",
+    "test": "jest .",
+    "test-coverage": "jest --coverage ."
   },
   "engines": {
     "node": ">=14.15.0"
@@ -24,14 +25,28 @@
     "typedi": "^0.8.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
+    "@babel/plugin-proposal-numeric-separator": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.4",
     "@serverless/typescript": "^2.23.0",
     "@types/aws-lambda": "^8.10.71",
+    "@types/jest": "^27.0.0",
     "@types/node": "^14.14.25",
     "@types/sequelize": "^4.28.10",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
     "dynalite": "^3.2.1",
     "eslint": "^7.32.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-typescript-metadata": "^0.2.2",
+    "jest": "^27.0.6",
     "json-schema-to-ts": "^1.5.0",
     "serverless": "^2.23.0",
     "serverless-offline": "^8.0.0",
@@ -45,5 +60,34 @@
     "webpack-node-externals": "^2.5.2"
   },
   "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
-  "license": "MIT"
+  "license": "MIT",
+  "jest": {
+    "verbose": true,
+    "bail": false,
+    "collectCoverage": false,
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "json",
+      "node"
+    ],
+    "testRegex": "/.*\\.(int)|(unit)\\.[jt]s$",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "#domain/(.*)": "<rootDir>/src/1-domain/$1",
+      "#business/(.*)": "<rootDir>/src/2-business/$1",
+      "#controller/(.*)": "<rootDir>/src/3-controller/$1",
+      "#framework/(.*)": "<rootDir>/src/4-framework/$1",
+      "#test/(.*)": "<rootDir>/test/$1"
+    }
+  }
 }

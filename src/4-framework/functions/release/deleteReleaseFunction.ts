@@ -1,14 +1,14 @@
 import 'reflect-metadata'
 import { APIGatewayProxyEvent, APIGatewayProxyHandler } from 'aws-lambda'
 import Container from 'typedi'
-import '@framework/repositories/categoryRepository'
-import '@framework/repositories/releaseRepository'
-import '@framework/modules/logger'
-import { httpEventNormalizer } from '@framework/utils/httpNormalized'
-import db from '@framework/utils/domainDb'
-import { LoggerToken } from '@business/modules/iLogger'
-import { DeleteReleaseOperation } from '@controller/operations/release/deleteReleaseOperation'
-import { DeleteReleaseInput } from '@controller/serializers/input/release/deleteReleaseInput'
+import '../../repositories/categoryRepository'
+import '../../repositories/releaseRepository'
+import '../../modules/logger'
+import { httpEventNormalizer } from '../../utils/httpNormalized'
+import db from '../../utils/domainDb'
+import { LoggerToken } from '../../../2-business/modules/iLogger'
+import { DeleteReleaseOperation } from '../../../3-controller/operations/release/deleteReleaseOperation'
+import { DeleteReleaseInput } from '../../../3-controller/serializers/input/release/deleteReleaseInput'
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) => {
   const logger = Container.get(LoggerToken)

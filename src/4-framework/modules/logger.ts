@@ -1,4 +1,4 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
+import ILogger, { LoggerToken } from '../../2-business/modules/iLogger'
 import { Service } from 'typedi/decorators/Service'
 
 

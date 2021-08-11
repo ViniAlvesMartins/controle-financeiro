@@ -1,14 +1,14 @@
 import 'reflect-metadata'
 import { APIGatewayProxyEvent, APIGatewayProxyHandler } from 'aws-lambda'
 import Container from 'typedi'
-import '@framework/repositories/releaseRepository'
-import '@framework/repositories/categoryRepository'
-import '@framework/modules/logger'
-import { httpEventNormalizer } from '@framework/utils/httpNormalized'
-import db from '@framework/utils/domainDb'
-import { LoggerToken } from '@business/modules/iLogger'
-import { GetBalanceOperation } from '@controller/operations/balance/getBalanceOperation'
-import { GetBalanceInput } from '@controller/serializers/input/balance/getBalanceInput'
+import '../../repositories/releaseRepository'
+import '../../repositories/categoryRepository'
+import '../../modules/logger'
+import { httpEventNormalizer } from '../../utils/httpNormalized'
+import db from '../../utils/domainDb'
+import { LoggerToken } from '../../../2-business/modules/iLogger'
+import { GetBalanceOperation } from '../../../3-controller/operations/balance/getBalanceOperation'
+import { GetBalanceInput } from '../../../3-controller/serializers/input/balance/getBalanceInput'
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) => {
   const logger = Container.get(LoggerToken)
@@ -18,8 +18,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const getBalanceOperation = Container.get(GetBalanceOperation)
   const normalizedInput = httpEventNormalizer(event)
   const input = new GetBalanceInput({
-    startDate: normalizedInput.dataInicio,
-    endDate: normalizedInput.dataFim,
+    startDate: normalizedInput.startDate,
+    endDate: normalizedInput.endDate,
     categoryId: Number(normalizedInput.categoryId)
   })
   const response = await getBalanceOperation.exec(input)

@@ -1,8 +1,8 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { CreateCategoryUseCase, CreateCategoryUseCaseToken } from '@business/useCases/category/createCategoryUseCase'
-import { CreateCategoryInput } from '@controller/serializers/input/category/createCategoryInput'
-import { CreateCategoryOutput } from '@controller/serializers/output/category/createCategoryOutput'
-import { BaseOperation, response, statusCode } from '@controller/utils/baseOperation'
+import ILogger, { LoggerToken } from '../../../2-business/modules/iLogger'
+import { CreateCategoryUseCase, CreateCategoryUseCaseToken } from '../../../2-business/useCases/category/createCategoryUseCase'
+import { CreateCategoryInput } from '../../serializers/input/category/createCategoryInput'
+import { CreateCategoryOutput } from '../../serializers/output/category/createCategoryOutput'
+import { BaseOperation, response, statusCode } from '../../utils/baseOperation'
 import { Inject, Service } from 'typedi'
 
 @Service({ transient: false })
@@ -24,7 +24,6 @@ export class CreateCategoryOperation extends BaseOperation {
 
     await this.inputValidation(input)
 
-    
     if (this.validations.length > 0){
       this._logger.error(`class: ${CreateCategoryOperation.name} | validations: ${JSON.stringify(this.validations)}`)
       return this.makeResponseValidations(this.validations)

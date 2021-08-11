@@ -1,7 +1,7 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { IReleaseRepository, IReleaseRepositoryToken } from '@business/repositories/iReleaseRepository'
-import { BaseUseCase } from '@business/utils/baseUseCase'
-import { IRelease } from '@domain/entities/releaseEntity'
+import ILogger, { LoggerToken } from '../../modules/iLogger'
+import { IReleaseRepository, IReleaseRepositoryToken } from '../../repositories/iReleaseRepository'
+import { BaseUseCase } from '../../utils/baseUseCase'
+import { IRelease } from '../../../1-domain/entities/releaseEntity'
 import { Inject, Service } from 'typedi'
 
 export const GetByIdReleaseUseCaseToken = 'GetByIdReleaseUseCase'

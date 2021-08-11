@@ -1,9 +1,8 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { GetAllReleaseUseCase, GetAllReleaseUseCaseToken } from '@business/useCases/release/getAllReleaseUseCase'
-import { GetAllReleaseInput } from '@controller/serializers/input/Release/getAllReleaseInput'
-import { GetAllCategoryOutput, GetAllReleaseOutput, GetAllSubcategoryOutput } from '@controller/serializers/output/release/getAllReleaseOutput'
-
-import { BaseOperation, response, statusCode } from '@controller/utils/baseOperation'
+import ILogger, { LoggerToken } from '../../../2-business/modules/iLogger'
+import { GetAllReleaseUseCase, GetAllReleaseUseCaseToken } from '../../../2-business/useCases/release/getAllReleaseUseCase'
+import { GetAllReleaseInput } from '../../serializers/input/Release/getAllReleaseInput'
+import { GetAllCategoryOutput, GetAllReleaseOutput, GetAllSubcategoryOutput } from '../../serializers/output/release/getAllReleaseOutput'
+import { BaseOperation, response, statusCode } from '../../utils/baseOperation'
 import { compareAsc, isValid, startOfDay } from 'date-fns'
 import { Inject, Service } from 'typedi'
 

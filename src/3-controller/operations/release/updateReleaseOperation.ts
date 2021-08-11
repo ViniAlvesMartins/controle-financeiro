@@ -1,11 +1,11 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { UpdateReleaseUseCase, UpdateReleaseUseCaseToken } from '@business/useCases/release/updateReleaseUseCase'
-import { UpdateReleaseInput } from '@controller/serializers/input/release/updateReleaseInput'
-import { BaseOperation, response, statusCode } from '@controller/utils/baseOperation'
-import { CodeErrors } from '@domain/utils/baseErrorList'
+import ILogger, { LoggerToken } from '../../../2-business/modules/iLogger'
+import { UpdateReleaseUseCase, UpdateReleaseUseCaseToken } from '../../../2-business/useCases/release/updateReleaseUseCase'
+import { UpdateReleaseInput } from '../../serializers/input/release/updateReleaseInput'
+import { BaseOperation, response, statusCode } from '../../utils/baseOperation'
+import { CodeErrors } from '../../../1-domain/utils/baseErrorList'
 import { Inject, Service } from 'typedi'
 import { isValid} from 'date-fns'
-import { UpdateCategoryOutput, UpdateReleaseOutput, UpdateSubcategoryOutput } from '@controller/serializers/output/release/UpdateReleaseOutput'
+import { UpdateCategoryOutput, UpdateReleaseOutput, UpdateSubcategoryOutput } from '../../serializers/output/release/UpdateReleaseOutput'
  
 @Service({ transient: false })
 export class UpdateReleaseOperation extends BaseOperation {

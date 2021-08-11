@@ -1,8 +1,8 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { DeleteReleaseUseCase, DeleteReleaseUseCaseToken } from '@business/useCases/Release/deleteReleaseUseCase'
-import { DeleteReleaseInput } from '@controller/serializers/input/Release/deleteReleaseInput'
-import { DeleteReleaseOutput } from '@controller/serializers/output/release/deleteReleaseOuput'
-import { BaseOperation, response, statusCode } from '@controller/utils/baseOperation'
+import ILogger, { LoggerToken } from '../../../2-business/modules/iLogger'
+import { DeleteReleaseUseCase, DeleteReleaseUseCaseToken } from '../../../2-business/useCases/Release/deleteReleaseUseCase'
+import { DeleteReleaseInput } from '../../serializers/input/Release/deleteReleaseInput'
+import { DeleteReleaseOutput } from '../../serializers/output/release/deleteReleaseOuput'
+import { BaseOperation, response, statusCode } from '../../utils/baseOperation'
 import { Inject, Service } from 'typedi'
 
 @Service({ transient: false })

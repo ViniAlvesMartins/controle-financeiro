@@ -1,4 +1,4 @@
-import { AuthResponse, PolicyDocument, Statement } from '@business/dto/auth/authorizerDto'
+import { AuthResponse, PolicyDocument, Statement } from '../../../2-business/dto/auth/authorizerDto'
 
 export const handler = async (event: any, context: any) => {
   const apiKey = event.headers['api-key']

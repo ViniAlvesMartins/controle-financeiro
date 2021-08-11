@@ -1,13 +1,13 @@
 import 'reflect-metadata'
 import { APIGatewayProxyEvent, APIGatewayProxyHandler } from 'aws-lambda'
 import Container from 'typedi'
-import '@framework/repositories/categoryRepository'
-import '@framework/modules/logger'
-import { GetByIdCategoryOperation} from '@controller/operations/category/getByIdCategoryOperation'
-import { httpEventNormalizer } from '@framework/utils/httpNormalized'
-import db from '@framework/utils/domainDb'
-import { LoggerToken } from '@business/modules/iLogger'
-import { GetByIdCategoryInput } from '@controller/serializers/input/category/getByIdCategoryInput'
+import '../../repositories/categoryRepository'
+import '../../modules/logger'
+import { GetByIdCategoryOperation} from '../../../3-controller/operations/category/getByIdCategoryOperation'
+import { httpEventNormalizer } from '../../utils/httpNormalized'
+import db from '../../utils/domainDb'
+import { LoggerToken } from '../../../2-business/modules/iLogger'
+import { GetByIdCategoryInput } from '../../../3-controller/serializers/input/category/getByIdCategoryInput'
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) => {
   const logger = Container.get(LoggerToken)

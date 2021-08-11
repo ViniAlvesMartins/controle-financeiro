@@ -1,4 +1,4 @@
-import { IRelease } from '@domain/entities/ReleaseEntity'
+import { IRelease } from '../../1-domain/entities/ReleaseEntity'
 import { DataTypes, Model, Sequelize } from 'sequelize'
 import Container, { Service, Token } from 'typedi'
 import { SubcategoryModel } from './subcategoryModel'

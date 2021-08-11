@@ -1,8 +1,8 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { IReleaseRepository, IReleaseRepositoryToken } from '@business/repositories/iReleaseRepository'
-import { BaseUseCase } from '@business/utils/baseUseCase'
-import { IRelease, ReleaseEntity } from '@domain/entities/releaseEntity'
-import { CodeErrors, baseErrorList } from '@domain/utils/baseErrorList'
+import ILogger, { LoggerToken } from '../../modules/iLogger'
+import { IReleaseRepository, IReleaseRepositoryToken } from '../../repositories/iReleaseRepository'
+import { BaseUseCase } from '../../utils/baseUseCase'
+import { IRelease, ReleaseEntity } from '../../../1-domain/entities/releaseEntity'
+import { CodeErrors, baseErrorList } from '../../../1-domain/utils/baseErrorList'
 import { Inject, Service } from 'typedi'
 
 export const DeleteReleaseUseCaseToken = 'DeleteReleaseUseCase'

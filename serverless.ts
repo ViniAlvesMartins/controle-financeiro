@@ -1,10 +1,10 @@
 import type { AWS } from '@serverless/typescript'
 
-import { categoryHandler } from '@framework/functions/category/_handler'
-import { subcategoryHandler } from '@framework/functions/subcategory/_handler'
-import { releaseHandler } from '@framework/functions/release/_handler'
-import { balanceHandler } from '@framework/functions/balance/_handler'
-import { authHandler } from '@framework/functions/auth/_handler'
+import { categoryHandler } from 'src/4-framework/functions/category/_handler'
+import { subcategoryHandler } from 'src/4-framework/functions/subcategory/_handler'
+import { releaseHandler } from 'src/4-framework/functions/release/_handler'
+import { balanceHandler } from 'src/4-framework/functions/balance/_handler'
+import { authHandler } from 'src/4-framework/functions/auth/_handler'
 
 const serverlessConfiguration: AWS = {
   service: 'controle-financeiro',

@@ -1,8 +1,8 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '@business/repositories/iSubcategoryRepository'
-import { ISubcategory } from '@domain/entities/subcategoryEntity'
-import { CategoryModel } from '@framework/models/categoryModel'
-import { SubcategoryModel, SubcategoryModelToken } from '@framework/models/subcategoryModel'
+import ILogger, { LoggerToken } from '../../2-business/modules/iLogger'
+import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '../../2-business/repositories/iSubcategoryRepository'
+import { ISubcategory } from '../../1-domain/entities/subcategoryEntity'
+import { CategoryModel } from '../models/categoryModel'
+import { SubcategoryModel, SubcategoryModelToken } from '../models/subcategoryModel'
 import { Op } from 'sequelize'
 import { Inject, Service } from 'typedi'
 

@@ -1,7 +1,7 @@
-const path = require('path');
-const slsw = require('serverless-webpack');
-const nodeExternals = require('webpack-node-externals');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const path = require('path')
+const slsw = require('serverless-webpack')
+const nodeExternals = require('webpack-node-externals')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 /*
 This line is only required if you are specifying `TS_NODE_PROJECT` for whatever reason.
@@ -37,7 +37,7 @@ module.exports = {
     rules: [
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
       {
-        test: /\.(tsx?)$/,
+        test: /\.(ts|js?)$/,
         loader: 'ts-loader',
         exclude: [
           [
@@ -54,4 +54,4 @@ module.exports = {
     ],
   },
   plugins: [],
-};
+}

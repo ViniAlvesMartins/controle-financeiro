@@ -1,4 +1,4 @@
-import { BaseEntity } from '@domain/utils/baseEntity'
+import { BaseEntity } from '../utils/baseEntity'
 import { ISubcategory } from './subcategoryEntity'
 
 export interface IRelease {

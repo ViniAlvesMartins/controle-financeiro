@@ -1,4 +1,4 @@
-import { ISubcategory } from '@domain/entities/subcategoryEntity'
+import { ISubcategory } from '../../1-domain/entities/subcategoryEntity'
 import { DataTypes, Model, Sequelize } from 'sequelize'
 import Container, { Service, Token } from 'typedi'
 import { CategoryModel } from './categoryModel'

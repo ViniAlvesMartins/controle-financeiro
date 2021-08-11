@@ -1,7 +1,7 @@
-import ILogger, { LoggerToken } from '@business/modules/iLogger'
-import { ICategoryRepository, ICategoryRepositoryToken } from '@business/repositories/iCategoryRepository'
-import { ICategory } from '@domain/entities/categoryEntity'
-import { CategoryModel, CategoryModelToken } from '@framework/models/categoryModel'
+import ILogger, { LoggerToken } from '../../2-business/modules/iLogger'
+import { ICategoryRepository, ICategoryRepositoryToken } from '../../2-business/repositories/iCategoryRepository'
+import { ICategory } from '../../1-domain/entities/categoryEntity'
+import { CategoryModel, CategoryModelToken } from '../models/categoryModel'
 import { Inject, Service } from 'typedi'
 
 @Service({

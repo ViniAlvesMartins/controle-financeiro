@@ -1,4 +1,4 @@
-import { ISubcategory } from '@domain/entities/subcategoryEntity'
+import { ISubcategory } from '../../1-domain/entities/subcategoryEntity'
 import { Token } from 'typedi'
 
 export const ISubcategoryRepositoryToken = new Token<ISubcategoryRepository>()
