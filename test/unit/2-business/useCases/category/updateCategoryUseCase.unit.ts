@@ -1,10 +1,10 @@
 import 'reflect-metadata'
-import ILogger, { LoggerToken } from '../../../../src/2-business/modules/iLogger'
+import ILogger, { LoggerToken } from '../../../../../src/2-business/modules/iLogger'
 import { Container } from 'typedi'
-import { ICategoryRepository, ICategoryRepositoryToken } from '../../../../src/2-business/repositories/iCategoryRepository'
-import {  CategoryEntity, ICategory } from '../../../../src/1-domain/entities/categoryEntity'
-import { UpdateCategoryUseCase } from '../../../../src/2-business/useCases/category/updateCategoryUseCase'
-import { baseErrorList, CodeErrors } from '../../../../src/1-domain/utils/baseErrorList'
+import { ICategoryRepository, ICategoryRepositoryToken } from '../../../../../src/2-business/repositories/iCategoryRepository'
+import {  CategoryEntity, ICategory } from '../../../../../src/1-domain/entities/categoryEntity'
+import { UpdateCategoryUseCase } from '../../../../../src/2-business/useCases/category/updateCategoryUseCase'
+import { baseErrorList, CodeErrors } from '../../../../../src/1-domain/utils/baseErrorList'
 
 const mockGetCategory = {
   categoryId: 1,

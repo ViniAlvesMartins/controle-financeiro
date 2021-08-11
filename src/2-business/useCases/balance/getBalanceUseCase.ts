@@ -76,13 +76,13 @@ export class GetBalanceUseCase extends BaseUseCase<IRelease> {
       } as BalanceCategoryOutputDto
     }
 
-    releases.map(release => {
+    for (const release of releases) {
       if(release.value > 0){
         balance.revenue += Number(release.value)
       }else {
         balance.expense += Number(release.value)
       }
-    })
+    }
 
     balance.balance = balance.revenue + balance.expense
 

@@ -1,9 +1,9 @@
 import 'reflect-metadata'
-import ILogger, { LoggerToken } from '../../../../src/2-business/modules/iLogger'
+import ILogger, { LoggerToken } from '../../../../../src/2-business/modules/iLogger'
 import { Container } from 'typedi'
-import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '../../../../src/2-business/repositories/iSubcategoryRepository'
-import { ISubcategory } from '../../../../src/1-domain/entities/subcategoryEntity'
-import { GetByIdSubcategoryUseCase } from '../../../../src/2-business/useCases/subcategory/getByIdSubcategoryUseCase'
+import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '../../../../../src/2-business/repositories/iSubcategoryRepository'
+import { ISubcategory } from '../../../../../src/1-domain/entities/subcategoryEntity'
+import { GetByIdSubcategoryUseCase } from '../../../../../src/2-business/useCases/subcategory/getByIdSubcategoryUseCase'
 
 const mockGetSubcategory = {
   subcategoryId: 1,

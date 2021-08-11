@@ -1,12 +1,12 @@
 import 'reflect-metadata'
-import ILogger, { LoggerToken } from '../../../../src/2-business/modules/iLogger'
+import ILogger, { LoggerToken } from '../../../../../src/2-business/modules/iLogger'
 import { Container } from 'typedi'
-import { ICategory } from '../../../../src/1-domain/entities/categoryEntity'
-import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '../../../../src/2-business/repositories/iSubcategoryRepository'
-import { ICategoryRepository, ICategoryRepositoryToken } from '../../../../src/2-business/repositories/iCategoryRepository'
-import { ISubcategory, SubcategoryEntity } from '../../../../src/1-domain/entities/subcategoryEntity'
-import { baseErrorList, CodeErrors } from '../../../../src/1-domain/utils/baseErrorList'
-import { UpdateSubcategoryUseCase, UpdateSubcategoryUseCaseInput } from '../../../../src/2-business/useCases/subcategory/updateSubcategoryUseCase'
+import { ICategory } from '../../../../../src/1-domain/entities/categoryEntity'
+import { ISubcategoryRepository, ISubcategoryRepositoryToken } from '../../../../../src/2-business/repositories/iSubcategoryRepository'
+import { ICategoryRepository, ICategoryRepositoryToken } from '../../../../../src/2-business/repositories/iCategoryRepository'
+import { ISubcategory, SubcategoryEntity } from '../../../../../src/1-domain/entities/subcategoryEntity'
+import { baseErrorList, CodeErrors } from '../../../../../src/1-domain/utils/baseErrorList'
+import { UpdateSubcategoryUseCase, UpdateSubcategoryUseCaseInput } from '../../../../../src/2-business/useCases/subcategory/updateSubcategoryUseCase'
 
 const mockGetSubcategory = {
   subcategoryId: 1,
