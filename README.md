@@ -18,7 +18,7 @@ Desafio: O desafio proposto é a implementação de um serviço para controle do
 
 ## Documentação
 
-[APIs](./CONTRATOS_API.md)
+[APIs](./contratosApis.md)
 [Postman](./postman/)
 
 ## Tecnologias
