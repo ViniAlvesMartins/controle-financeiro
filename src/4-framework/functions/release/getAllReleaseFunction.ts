@@ -19,8 +19,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const getByIdReleaseOperation = Container.get(GetAllReleaseOperation)
   const normalizedInput = httpEventNormalizer(event)
   const input = new GetAllReleaseInput({
-    startDate: normalizedInput.dataInicio,
-    endDate: normalizedInput.dataFim,
+    startDate: normalizedInput.startDate,
+    endDate: normalizedInput.endDate,
     subcategoryId: normalizedInput.subcategoryId
   })
   const response = await getByIdReleaseOperation.exec(input)

@@ -46,7 +46,7 @@ export class UpdateReleaseOperation extends BaseOperation {
     const response = {
       releaseId: release.releaseId,
       date: release.date,
-      value: release.value,
+      value: Number(release.value),
       comment: release.comment,
       subcategory: {
         subcategoryId: release.Subcategory.subcategoryId,
@@ -63,9 +63,12 @@ export class UpdateReleaseOperation extends BaseOperation {
   }
 
   private async inputValidation(input: UpdateReleaseInput) {
+    if(!input.releaseId){
+      await this.makeInputValidation(`O campo 'releaseId' tem que ser do tipo númerico`, 'releaseId')
+    }
 
     if (input.value && input.value === 0){
-      await this.makeInputValidation(`O campo 'valor' tem que ser diferente de 0`, 'valor')
+      await this.makeInputValidation(`O campo 'value' tem que ser diferente de 0`, 'value')
     }
 
     if (input.date && !isValid(new Date(input.date))){

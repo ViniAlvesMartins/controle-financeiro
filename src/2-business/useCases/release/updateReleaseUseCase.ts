@@ -60,6 +60,7 @@ export class UpdateReleaseUseCase extends BaseUseCase<IRelease> {
     if(input.value) {
       existingRelease.value = input.value
     } 
+    console.log(`input ${JSON.stringify(input)}`)
     if(input.subcategoryId) {
       existingRelease.subcategoryId = input.subcategoryId
     }

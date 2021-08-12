@@ -65,15 +65,15 @@ export class GetAllReleaseOperation extends BaseOperation {
 
   private async inputValidation(input: GetAllReleaseInput) {
     if (input.startDate && !isValid(new Date(input.startDate))){
-      await this.makeInputValidation(`O campo 'data_inicio' é inválido`, 'data_inicio')
+      await this.makeInputValidation(`O campo 'startDate' é inválido`, 'startDate')
     }
 
     if (input.endDate && !isValid(new Date(input.endDate))){
-      await this.makeInputValidation(`O campo 'data_fim' é inválido`, 'data_fim')
+      await this.makeInputValidation(`O campo 'endDate' é inválido`, 'endDate')
     }
 
     if(input.startDate && input.endDate && compareAsc(new Date(input.startDate), new Date(input.endDate)) === 1) {
-      await this.makeInputValidation(`A 'data_inicio' deve ser menor que a 'data_fim'`, 'data_fim')
+      await this.makeInputValidation(`A 'startDate' deve ser menor que a 'endDate'`, 'endDate')
     }
 
     if (input.subcategoryId && !Number(input.subcategoryId)){

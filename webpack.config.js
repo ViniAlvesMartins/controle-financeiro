@@ -32,7 +32,11 @@ module.exports = {
     concatenateModules: false,
   },
   target: 'node',
-  externals: [nodeExternals()],
+  externals: [nodeExternals(),
+    /^mysql2/i,
+    /^aws-sdk/i,
+    /^typedi/i,
+    /^sequelize/i,],
   module: {
     rules: [
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`

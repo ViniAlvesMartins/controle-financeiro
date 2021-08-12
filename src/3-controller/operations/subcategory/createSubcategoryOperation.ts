@@ -53,7 +53,7 @@ export class CreateSubcategoryOperation extends BaseOperation {
     } as CreateSubcategoryOutput
 
     this._logger.info(`class: ${CreateSubcategoryOperation.name} | method: exec | message: finishing operation execution`)
-    return this.makeResponse(response, statusCode.SUCCESS)    
+    return this.makeResponse(response, statusCode.CREATED)    
   }
 
   private async inputValidation(input: CreateSubcategoryInput) {
