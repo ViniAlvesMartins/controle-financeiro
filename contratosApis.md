@@ -17,7 +17,7 @@
 ## Serviço
 
 - [Balanço](#balanço)
-- [Autenticação](#autenticacao)
+- [Autenticação](#autenticação)
 
 ## Categorias
 
