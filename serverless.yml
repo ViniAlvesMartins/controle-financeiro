@@ -31,9 +31,9 @@ provider:
       - .vscode/**
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
-    DATABASE_HOST: "database-2.c5wgrjqjtzm1.us-east-1.rds.amazonaws.com"
-    DATABASE_PORT: "3306"
-    DATABASE_USER: "vinicius_martins"
+    DATABASE_HOST: "localhost"
+    DATABASE_PORT: "33306"
+    DATABASE_USER: "admin"
     DATABASE_PASSWORD: "financeiro"
     DATABASE: "financeiro"
     API_KEY: "aXRhw7o="
@@ -48,21 +48,3 @@ functions:
   - ${file(${self:custom.funcDir}/subcategory/_handlers.yml)}
   - ${file(${self:custom.funcDir}/release/_handlers.yml)}
   - ${file(${self:custom.funcDir}/balance/_handlers.yml)}
-
-resources:
-  Resources:
-    ApiGatewayRestApi:
-      Type: AWS::ApiGateway::RestApi
-      Properties:
-        Name: ${self:provider.stage}-financeiro
-
-    ApiGatewayAuthorizerHeader:
-      Type: AWS::ApiGateway::Authorizer
-      Properties:
-        Name: authorizerFunc
-        Type: REQUEST
-        AuthorizerResultTtlInSeconds: 0
-        IdentitySource: method.request.header.api-key
-        IdentityValidationExpression: .*
-        RestApiId: ${ssm:apiKeyId}
-        AuthorizerUri: arn:aws:apigateway:#{AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:controle-financeiro-dev-authorizerFunc/invocations

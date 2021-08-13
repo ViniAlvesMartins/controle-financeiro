@@ -20,12 +20,12 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/balance?startDate=\"2021/08/07\"&endDate=\"2021/08/12\"&categoryId=1",
+							"raw": "{{baseUrl}}/balances?startDate=\"2021/08/07\"&endDate=\"2021/08/12\"&categoryId=1",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"balance"
+								"balances"
 							],
 							"query": [
 								{
@@ -63,7 +63,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Saúde\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Saúdes\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -94,7 +94,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/categories?name=Saúde",
+							"raw": "{{baseUrl}}/categories",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -104,7 +104,8 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "Saúde"
+									"value": "Saúde",
+									"disabled": true
 								}
 							]
 						}
@@ -176,7 +177,8 @@
 							{
 								"key": "api-key",
 								"value": "{{apiKey}}",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
