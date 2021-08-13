@@ -1,0 +1,78 @@
+createSubcategory:
+  handler: ${self:custom.funcDir}/subcategory/createSubcategoryFunction.handler
+  events:
+    - http:
+        method: post
+        path: ${self:custom.baseAPi}/subcategories
+        cors: true
+        authorizer:
+          name: authorizerFunc
+          type: REQUEST
+          identitySource: method.request.header.api-key
+
+getAllSubcategory:
+  handler: ${self:custom.funcDir}/subcategory/getAllSubcategoryFunction.handler
+  events:
+    - http:
+        method: get
+        path: ${self:custom.baseAPi}/subcategories
+        cors: true
+        authorizer:
+          name: authorizerFunc
+          type: REQUEST
+          identitySource: method.request.header.api-key
+        request:
+          parameters:
+            querystrings:
+              name: false
+
+getByIdSubcategory:
+  handler: ${self:custom.funcDir}/subcategory/getByIdSubcategoryFunction.handler
+  events:
+    - http:
+        method: get
+        path: ${self:custom.baseAPi}/subcategories/{subcategoryId}
+        cors: true
+        authorizer:
+          name: authorizerFunc
+          type: REQUEST
+          identitySource: method.request.header.api-key
+
+        request:
+          parameters:
+            paths:
+              subcategoryId: true
+
+updateSubcategory:
+  handler: ${self:custom.funcDir}/subcategory/updateSubcategoryFunction.handler
+  events:
+    - http:
+        method: put
+        path: ${self:custom.baseAPi}/subcategories/{subcategoryId}
+        cors: true
+        authorizer:
+          name: authorizerFunc
+          type: REQUEST
+          identitySource: method.request.header.api-key
+
+        request:
+          parameters:
+            paths:
+              subcategoryId: true
+
+deleteSubcategory:
+  handler: ${self:custom.funcDir}/subcategory/deleteSubcategoryFunction.handler
+  events:
+    - http:
+        method: delete
+        path: ${self:custom.baseAPi}/subcategories/{subcategoryId}
+        cors: true
+        authorizer:
+          name: authorizerFunc
+          type: REQUEST
+          identitySource: method.request.header.api-key
+
+        request:
+          parameters:
+            paths:
+              subcategoryId: true

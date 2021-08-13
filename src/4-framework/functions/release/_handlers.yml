@@ -1,0 +1,77 @@
+createRelease:
+  handler: ${self:custom.funcDir}/release/createReleaseFunction.handler
+  events:
+    - http:
+        method: POST
+        path: ${self:custom.baseAPi}/releases
+        cors: true
+        authorizer:
+          name: authorizerFunc
+          type: REQUEST
+          identitySource: method.request.header.api-key
+
+getByIdRelease:
+  handler: ${self:custom.funcDir}/release/getByIdReleaseFunction.handler
+  events:
+    - http:
+        method: GET
+        path: ${self:custom.baseAPi}/releases/{releaseId}
+        cors: true
+        authorizer:
+          name: authorizerFunc
+          type: REQUEST
+          identitySource: method.request.header.api-key
+        request:
+          parameters:
+            paths:
+              releaseId: true
+
+getAllRelease:
+  handler: ${self:custom.funcDir}/release/getAllReleaseFunction.handler
+  events:
+    - http:
+        method: GET
+        path: ${self:custom.baseAPi}/releases
+        cors: true
+        authorizer:
+          name: authorizerFunc
+          type: REQUEST
+          identitySource: method.request.header.api-key
+        request:
+          parameters:
+            querystrings:
+              name: false
+              startDate: false
+              endDate: false
+
+updateRelease:
+  handler: ${self:custom.funcDir}/release/updateReleaseFunction.handler
+  events:
+    - http:
+        method: PUT
+        path: ${self:custom.baseAPi}/releases/{releaseId}
+        cors: true
+        authorizer:
+          name: authorizerFunc
+          type: REQUEST
+          identitySource: method.request.header.api-key
+        request:
+          parameters:
+            paths:
+              releaseId: true
+
+deleteRelease:
+  handler: ${self:custom.funcDir}/release/deleteReleaseFunction.handler
+  events:
+    - http:
+        method: DELETE
+        path: ${self:custom.baseAPi}/releases/{releaseId}
+        cors: true
+        authorizer:
+          name: authorizerFunc
+          type: REQUEST
+          identitySource: method.request.header.api-key
+        request:
+          parameters:
+            paths:
+              releaseId: true

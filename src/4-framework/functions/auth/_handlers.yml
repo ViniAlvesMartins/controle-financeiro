@@ -1,0 +1,2 @@
+authorizerFunc:
+  handler: ${self:custom.funcDir}/auth/authFunction.handler

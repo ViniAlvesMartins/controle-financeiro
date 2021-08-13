@@ -1,7 +1,10 @@
 import { AuthResponse, PolicyDocument, Statement } from '../../../2-business/dto/auth/authorizerDto'
 
 export const handler = async (event: any, context: any) => {
+  console.log(event)
   const apiKey = event.headers['api-key']
+  console.log(apiKey)
+  console.log(process.env.API_KEY)
   let output: AuthResponse
 
   if (`${apiKey}` === `${process.env.API_KEY}` ) {

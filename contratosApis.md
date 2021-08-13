@@ -2,7 +2,11 @@
 
 ## Endpoint:
 
-### baseUrl: https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1
+### baseUrl: https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1
+
+## Authorizer
+
+### Header : api_key = "aXRhw7o="
 
 ## Entidades
 
@@ -13,6 +17,7 @@
 ## Serviço
 
 - [Balanço](#balanço)
+- [Autenticação](#autenticacao)
 
 ## Categorias
 
@@ -27,7 +32,7 @@
 ## Criar Categoria
 
 ```
-POST https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/categories
+POST https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/categories
 ```
 
 ### Body:
@@ -67,7 +72,7 @@ status: 303 See Other
 ## Listar Categoria
 
 ```
-GET https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/categories
+GET https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/categories
 ```
 
 ### QueryParams:
@@ -108,7 +113,7 @@ status: 400 Bad Request
 ## Obter Categoria
 
 ```
-GET https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/categories/{categoryId}
+GET https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/categories/{categoryId}
 ```
 
 ### PathParams:
@@ -157,7 +162,7 @@ status: 400 Bad Request
 ## Atualizar Categoria
 
 ```
-PUT https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/categories/{categoryId}
+PUT https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/categories/{categoryId}
 ```
 
 ### PathParams:
@@ -217,7 +222,7 @@ status: 400 Bad Request
 ## Deletar Categoria
 
 ```
-DELETE https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/categories/{categoryId}
+DELETE https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/categories/{categoryId}
 ```
 
 ### PathParams:
@@ -278,7 +283,7 @@ status: 400 Bad Request
 ## Criar Subcategoria
 
 ```
-POST https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/subcategories
+POST https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/subcategories
 ```
 
 ### Body:
@@ -344,7 +349,7 @@ status: 400 Bad Request
 ## Listar Subcategoria
 
 ```
-GET https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/subcategories
+GET https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/subcategories
 ```
 
 ### QueryParams:
@@ -385,7 +390,7 @@ status: 400 Bad Request
 ## Obter Subcategoria
 
 ```
-GET https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/subcategories/{subcategoryId}
+GET https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/subcategories/{subcategoryId}
 ```
 
 ### PathParams:
@@ -438,7 +443,7 @@ status: 400 Bad Request
 ## Atualizar Subcategoria
 
 ```
-PUT https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/subcategories/{subcategoryId}
+PUT https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/subcategories/{subcategoryId}
 ```
 
 ### PathParams:
@@ -517,7 +522,7 @@ status: 400 Bad Request
 ## Deletar Subcategoria
 
 ```
-DELETE https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/succategories/{subcategoryId}
+DELETE https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/succategories/{subcategoryId}
 ```
 
 ### PathParams:
@@ -587,7 +592,7 @@ status: 400 Bad Request
 ## Criar Lançamento
 
 ```
-POST https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/releases
+POST https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/releases
 ```
 
 ### Body:
@@ -657,7 +662,7 @@ status: 400 Bad Request
 ## Listar Lançamento
 
 ```
-GET https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/releases
+GET https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/releases
 ```
 
 ### QueryParams:
@@ -727,7 +732,7 @@ status: 400 Bad Request
 ## Obter Lançamento
 
 ```
-GET https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/releases/{releaseId}
+GET https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/releases/{releaseId}
 ```
 
 ### PathParams:
@@ -786,7 +791,7 @@ status: 400 Bad Request
 ## Atualizar Lançamento
 
 ```
-PUT https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/releases/{releaseId}
+PUT https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/releases/{releaseId}
 ```
 
 ### PathParams:
@@ -863,7 +868,7 @@ status: 400 Bad Request
 ## Deletar Lançamento
 
 ```
-DELETE https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/releases/{releaseId}
+DELETE https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/releases/{releaseId}
 ```
 
 ### PathParams:
@@ -918,7 +923,7 @@ status: 400 Bad Request
 ## Obter Balanços
 
 ```
-GET https://mwzlojedy6.execute-api.us-east-1.amazonaws.com/dev/v1/balances
+GET https://zy92hy747i.execute-api.us-east-2.amazonaws.com/prod/api/v1/balances
 ```
 
 ### QueryParams:
@@ -979,3 +984,21 @@ status: 400 Bad Request
 ```
 
 ---
+
+## Autenticação
+
+```
+status: 403 Forbidden
+{
+	"message": "Missing Authentication Token"
+}
+
+```
+
+```
+status: 401 Unauthorized
+{
+	"message": "Unauthorized"
+}
+
+```

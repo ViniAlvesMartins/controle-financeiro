@@ -1,0 +1,17 @@
+getBalance:
+  handler: ${self:custom.funcDir}/balance/getBalanceFunction.handler
+  events:
+    - http:
+        method: GET
+        path: ${self:custom.baseAPi}/balances
+        cors: true
+        authorizer:
+          name: authorizerFunc
+          type: REQUEST
+          identitySource: method.request.header.api-key
+        request:
+          parameters:
+            querystrings:
+              startDate: true
+              endDate: true
+              categoryId: false
